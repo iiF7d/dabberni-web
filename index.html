@@ -1,0 +1,632 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>دبّرني — منصة المهمات السعودية</title>
+  <meta name="description" content="دبّرني — ربطك بأفضل المُدبِّرين لإنجاز مهماتك اليومية بضمان مالي كامل. تطبيق سعودي." />
+  <meta property="og:title" content="دبّرني — أبشر بي" />
+  <meta property="og:description" content="منصة المهمات السعودية الأولى — نظام ضمان مالي، مُدبِّرون موثّقون، سرعة إنجاز." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/preview.png" />
+  <meta name="theme-color" content="#0E6B5A" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%230E6B5A'/%3E%3Ctext x='50' y='72' font-size='64' font-family='Tajawal,Arial' font-weight='800' fill='white' text-anchor='middle'%3Eد%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --emerald: #0E6B5A;
+      --emerald-dark: #0A4F42;
+      --sand: #D9A75A;
+      --sand-light: #EACE96;
+      --bg: #F7F3EB;
+      --surface: #FFFFFF;
+      --text: #1A1F1D;
+      --muted: #6B7671;
+      --border: #E5DED0;
+      --danger: #C0392B;
+      --success: #22876C;
+      --shadow: 0 12px 40px rgba(14,107,90,0.10);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      font-family: 'Tajawal', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* ═══════════ NAV ═══════════ */
+    nav {
+      position: sticky; top: 0; z-index: 50;
+      background: var(--emerald);
+      border-bottom: 2px solid rgba(217,167,90,0.3);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 8px 24px; max-width: 1200px; margin: 0 auto; min-height: 100px;
+    }
+    .nav-links a { color: rgba(255,255,255,0.85) !important; }
+    .nav-links a:hover { color: white !important; }
+    .nav-cta {
+      background: var(--sand) !important;
+      color: var(--text) !important;
+    }
+    .nav-cta:hover { background: var(--sand-light) !important; }
+    .logo { display: flex; align-items: center; }
+    .logo img {
+      height: 100px; width: auto; display: block;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.15));
+    }
+    .logo-footer { margin-bottom: 12px; }
+    .logo-footer img { height: 160px !important; max-width: 100%; display: block; }
+    .footer-brand { max-width: 360px; }
+    @media (max-width: 720px) {
+      .logo img { height: 72px; }
+      .logo-footer img { height: 130px !important; }
+    }
+    .nav-links {
+      display: flex; gap: 28px; align-items: center;
+    }
+    .nav-links a {
+      color: var(--muted); font-weight: 500; font-size: 15px;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--emerald); }
+    .nav-cta {
+      background: var(--emerald); color: white !important;
+      padding: 10px 20px; border-radius: 10px; font-weight: 700;
+      transition: all .2s;
+    }
+    .nav-cta:hover { background: var(--emerald-dark); transform: translateY(-1px); }
+
+    @media (max-width: 720px) {
+      .nav-links { gap: 12px; }
+      .nav-links a:not(.nav-cta) { display: none; }
+    }
+
+    /* ═══════════ HERO ═══════════ */
+    .hero {
+      padding: 80px 0 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-decoration {
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(14,107,90,0.06) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(217,167,90,0.10) 0%, transparent 45%);
+    }
+    .hero-grid {
+      display: grid; grid-template-columns: 1.15fr 1fr; gap: 60px;
+      align-items: center; position: relative;
+    }
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+      .hero { padding: 40px 0; }
+    }
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(14,107,90,0.10);
+      color: var(--emerald);
+      padding: 6px 14px; border-radius: 100px;
+      font-weight: 700; font-size: 13px;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: clamp(38px, 6vw, 64px);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+    h1 .grad {
+      background: linear-gradient(135deg, var(--emerald), var(--sand));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero p {
+      font-size: 18px; color: var(--muted);
+      max-width: 500px; margin-bottom: 32px;
+    }
+    @media (max-width: 900px) { .hero p { margin-left: auto; margin-right: auto; } }
+    .cta-row {
+      display: flex; gap: 12px; flex-wrap: wrap;
+    }
+    @media (max-width: 900px) { .cta-row { justify-content: center; } }
+
+    .store-btn {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: var(--text);
+      color: white !important;
+      padding: 14px 24px;
+      border-radius: 14px;
+      transition: all .25s;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+    .store-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(0,0,0,0.2); }
+    .store-btn svg { width: 28px; height: 28px; }
+    .store-btn .sm { font-size: 11px; opacity: 0.75; line-height: 1; }
+    .store-btn .lg { font-size: 17px; font-weight: 800; line-height: 1.1; margin-top: 2px; }
+    .store-btn.soon { background: var(--border); color: var(--muted) !important; box-shadow: none; cursor: not-allowed; }
+    .store-btn.soon:hover { transform: none; box-shadow: none; }
+
+    /* Phone mockup */
+    .phone-wrap {
+      display: flex; justify-content: center; position: relative;
+    }
+    .phone {
+      width: 300px; aspect-ratio: 300 / 620;
+      background: var(--text);
+      border-radius: 40px;
+      padding: 14px;
+      box-shadow:
+        0 30px 60px rgba(14,107,90,0.20),
+        0 0 0 2px rgba(0,0,0,0.05);
+      position: relative;
+    }
+    .phone::before {
+      content: ''; position: absolute; top: 20px; left: 50%;
+      transform: translateX(-50%);
+      width: 100px; height: 22px; background: #000;
+      border-radius: 20px; z-index: 5;
+    }
+    .phone-screen {
+      background: linear-gradient(160deg, var(--emerald), var(--emerald-dark));
+      border-radius: 28px;
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 60px 20px 30px;
+      overflow: hidden;
+    }
+    .phone-slogan { color: rgba(255,255,255,0.85) !important; }
+    .phone-preview {
+      background: rgba(255,255,255,0.12) !important;
+      border: 1px solid rgba(255,255,255,0.18) !important;
+      backdrop-filter: blur(10px);
+    }
+    .phone-preview .txt { color: white !important; }
+    .phone-hero-logo {
+      width: 230px;
+      max-width: 90%;
+      display: block;
+      margin-bottom: 12px;
+      filter: drop-shadow(0 8px 20px rgba(14,107,90,0.15));
+    }
+    .phone-slogan {
+      color: var(--muted); font-size: 15px; margin-top: 4px;
+    }
+    .phone-preview {
+      margin-top: 30px; background: white;
+      border: 1px solid var(--border);
+      border-radius: 14px; padding: 14px 16px;
+      width: 100%;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .phone-preview .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--emerald); flex-shrink: 0;
+    }
+    .phone-preview .txt {
+      font-size: 13px; font-weight: 600; color: var(--text);
+    }
+
+    /* ═══════════ FEATURES ═══════════ */
+    section { padding: 80px 0; }
+    .section-title {
+      text-align: center; margin-bottom: 50px;
+    }
+    .section-title h2 {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 900; margin-bottom: 12px;
+    }
+    .section-title p {
+      color: var(--muted); font-size: 17px;
+      max-width: 600px; margin: 0 auto;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .feature {
+      background: white; padding: 32px 24px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      transition: all .3s;
+    }
+    .feature:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+      border-color: rgba(14,107,90,0.2);
+    }
+    .feature-icon {
+      width: 56px; height: 56px;
+      background: linear-gradient(135deg, var(--emerald), var(--emerald-dark));
+      border-radius: 16px;
+      display: grid; place-items: center;
+      font-size: 26px; color: white;
+      margin-bottom: 16px;
+    }
+    .feature h3 {
+      font-size: 20px; font-weight: 800; margin-bottom: 8px;
+    }
+    .feature p {
+      color: var(--muted); font-size: 15px; line-height: 1.7;
+    }
+
+    /* ═══════════ HOW IT WORKS ═══════════ */
+    .how-it-works {
+      background: white;
+    }
+    .steps {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+    @media (max-width: 800px) { .steps { grid-template-columns: 1fr; } }
+    .step {
+      text-align: center;
+      padding: 30px 20px;
+    }
+    .step-num {
+      width: 60px; height: 60px;
+      background: linear-gradient(135deg, var(--sand), var(--sand-light));
+      color: var(--text);
+      border-radius: 50%;
+      display: grid; place-items: center;
+      font-size: 26px; font-weight: 900;
+      margin: 0 auto 20px;
+    }
+    .step h4 { font-size: 20px; font-weight: 800; margin-bottom: 10px; }
+    .step p { color: var(--muted); font-size: 15px; }
+
+    /* ═══════════ STATS ═══════════ */
+    .stats {
+      background: linear-gradient(135deg, var(--emerald), var(--emerald-dark));
+      color: white;
+      border-radius: 24px;
+      padding: 40px 24px;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 30px; text-align: center;
+      margin: 40px auto;
+      max-width: 1000px;
+    }
+    @media (max-width: 700px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+    .stat-num { font-size: 36px; font-weight: 900; line-height: 1; margin-bottom: 4px; }
+    .stat-label { font-size: 13px; opacity: 0.85; }
+
+    /* ═══════════ FAQ ═══════════ */
+    .faq { max-width: 800px; margin: 0 auto; }
+    .faq-item {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      margin-bottom: 12px;
+      overflow: hidden;
+      transition: all .2s;
+    }
+    .faq-item:hover { border-color: rgba(14,107,90,0.2); }
+    .faq-q {
+      padding: 20px 24px;
+      display: flex; justify-content: space-between; align-items: center;
+      cursor: pointer;
+      font-weight: 700; font-size: 16px;
+    }
+    .faq-a {
+      max-height: 0; overflow: hidden;
+      padding: 0 24px;
+      color: var(--muted);
+      transition: all .3s ease;
+    }
+    .faq-item[open] .faq-a { max-height: 300px; padding: 0 24px 20px; }
+    .faq-item[open] .arrow { transform: rotate(180deg); }
+    .arrow {
+      width: 20px; height: 20px;
+      transition: transform .3s;
+      color: var(--emerald);
+    }
+
+    /* ═══════════ FOOTER ═══════════ */
+    footer {
+      background: var(--text);
+      color: white;
+      padding: 60px 0 30px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; } }
+    .footer-brand p {
+      color: rgba(255,255,255,0.6); font-size: 14px; margin-top: 12px;
+      line-height: 1.8;
+    }
+    footer h5 {
+      font-weight: 800; margin-bottom: 16px; font-size: 15px;
+    }
+    footer ul { list-style: none; }
+    footer li { margin-bottom: 10px; }
+    footer li a {
+      color: rgba(255,255,255,0.65);
+      font-size: 14px;
+      transition: color .2s;
+    }
+    footer li a:hover { color: white; }
+    .socials { display: flex; gap: 12px; margin-top: 16px; }
+    .socials a {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: rgba(255,255,255,0.1);
+      display: grid; place-items: center;
+      transition: all .2s;
+    }
+    .socials a:hover { background: var(--emerald); }
+    .socials svg { width: 18px; height: 18px; }
+    .copyright {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 24px; text-align: center;
+      color: rgba(255,255,255,0.5); font-size: 13px;
+    }
+
+    /* WhatsApp Floating */
+    .wa-float {
+      position: fixed; bottom: 24px; left: 24px;
+      width: 56px; height: 56px; border-radius: 50%;
+      background: #25D366; color: white;
+      display: grid; place-items: center;
+      box-shadow: 0 8px 24px rgba(37,211,102,0.4);
+      z-index: 100;
+      transition: transform .2s;
+    }
+    .wa-float:hover { transform: scale(1.1); }
+    .wa-float svg { width: 28px; height: 28px; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="logo" aria-label="دبّرني"><img src="logo.png" alt="دبّرني" /></a>
+      <div class="nav-links">
+        <a href="#features">المميّزات</a>
+        <a href="#how">كيف يعمل</a>
+        <a href="#faq">الأسئلة</a>
+        <a href="#download" class="nav-cta">حمّل التطبيق</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-decoration"></div>
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <span class="badge">🇸🇦 صُنع في المملكة</span>
+          <h1>دبّرني — <span class="grad">أبشر بي</span></h1>
+          <p>منصة سعودية تربطك بأفضل المُدبِّرين لإنجاز مهماتك اليومية — من التصميم إلى التوصيل — بضمان مالي كامل وسرعة قياسية.</p>
+          <div class="cta-row" id="download">
+            <a href="#" class="store-btn soon" aria-disabled="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.04c-.03-2.9 2.37-4.29 2.48-4.36-1.36-1.98-3.47-2.25-4.22-2.28-1.8-.18-3.51 1.06-4.42 1.06-.92 0-2.32-1.03-3.82-1.01-1.96.03-3.79 1.14-4.8 2.9-2.05 3.54-.52 8.78 1.47 11.65.98 1.41 2.13 2.99 3.63 2.93 1.47-.06 2.02-.94 3.79-.94 1.77 0 2.27.94 3.82.91 1.58-.03 2.58-1.43 3.55-2.85 1.12-1.63 1.58-3.21 1.6-3.29-.03-.02-3.07-1.18-3.1-4.68m-2.87-8.62c.81-.99 1.36-2.36 1.21-3.72-1.17.05-2.59.78-3.44 1.76-.76.87-1.42 2.26-1.24 3.6 1.31.1 2.65-.66 3.47-1.64"/></svg>
+              <div style="text-align: start;">
+                <div class="sm">قريباً على</div>
+                <div class="lg">App Store</div>
+              </div>
+            </a>
+            <a href="#" class="store-btn soon" aria-disabled="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626-2.492-2.492 2.493-2.49zM5.864 2.658L16.802 8.99l-2.302 2.302-8.636-8.634z"/></svg>
+              <div style="text-align: start;">
+                <div class="sm">قريباً على</div>
+                <div class="lg">Google Play</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="phone-wrap">
+          <div class="phone">
+            <div class="phone-screen">
+              <img src="logo.png" alt="دبّرني" class="phone-hero-logo" />
+              <div class="phone-slogan">دبّرني! أبشر بي.</div>
+              <div class="phone-preview">
+                <div class="dot"></div>
+                <div class="txt">🔒 مهامك محمية بنظام ضمان مالي</div>
+              </div>
+              <div class="phone-preview">
+                <div class="dot" style="background: var(--sand);"></div>
+                <div class="txt">⚡ عروض خلال دقائق</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="container">
+      <div class="section-title">
+        <h2>لماذا دبّرني؟</h2>
+        <p>منصة مبنية بمعايير عالمية، مصمّمة للسوق السعودي، بأمان مالي كامل.</p>
+      </div>
+      <div class="features">
+        <div class="feature">
+          <div class="feature-icon">🔒</div>
+          <h3>ضمان مالي</h3>
+          <p>مبلغ المهمة يُحجز حتى إتمامها. لا تدفع إلا بعد إتمام المُدبِّر لعمله بجودة.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">⚡</div>
+          <h3>سرعة الإنجاز</h3>
+          <p>عروض تصلك خلال دقائق من نشر المهمة. مُدبِّرون متاحون على مدار الساعة.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">✅</div>
+          <h3>مُدبِّرون موثّقون</h3>
+          <p>نظام تقييمات متبادل، مستويات (مبتدئ → موثّق → خبير)، وسجل أعمال شفّاف.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">💬</div>
+          <h3>محادثات آمنة</h3>
+          <p>محادثة مباشرة داخل التطبيق مع فلترة تلقائية للتواصل الخارجي غير المرغوب.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🇸🇦</div>
+          <h3>سعودي 100%</h3>
+          <p>واجهة عربية أصيلة، دفع بالريال عبر مدى وSTC Pay وApple Pay، دعم محلي.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🛡️</div>
+          <h3>خصوصية بمعايير PDPL</h3>
+          <p>بياناتك مشفّرة، مخزّنة إقليمياً، ومحمية وفق نظام حماية البيانات الشخصية السعودي.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how" class="how-it-works">
+    <div class="container">
+      <div class="section-title">
+        <h2>كيف يعمل؟</h2>
+        <p>ثلاث خطوات بسيطة لإنجاز مهمتك.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h4>انشر مهمتك</h4>
+          <p>اكتب ما تحتاجه، حدّد الميزانية، وأرسل. تصل مهمتك للمُدبِّرين المناسبين خلال ثوانٍ.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h4>اختر مُدبِّرك</h4>
+          <p>راجع العروض والتقييمات، ثم اقبل الأنسب. المبلغ يُحجز في نظام الضمان تلقائياً.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h4>استلم وأكّد</h4>
+          <p>عند إتمام المهمة، أكّد الاستلام. يُحرَّر المبلغ للمُدبِّر بعد خصم عمولة المنصة (10٪).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section>
+    <div class="container">
+      <div class="stats">
+        <div><div class="stat-num">10%</div><div class="stat-label">عمولة فقط</div></div>
+        <div><div class="stat-num">5د</div><div class="stat-label">متوسط أول عرض</div></div>
+        <div><div class="stat-num">24/7</div><div class="stat-label">دعم فوري</div></div>
+        <div><div class="stat-num">100%</div><div class="stat-label">حماية ضمان</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-title">
+        <h2>الأسئلة الشائعة</h2>
+      </div>
+      <div class="faq">
+        <details class="faq-item">
+          <summary class="faq-q">
+            كيف يعمل نظام الضمان؟
+            <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg>
+          </summary>
+          <div class="faq-a">
+            <p>عند قبولك لعرض، يُحجز المبلغ من محفظتك في حساب ضمان — لا يصل للمُدبِّر مباشرة. عند إتمام المهمة، يُحرَّر المبلغ تلقائياً بعد خصم العمولة، أو إذا لم تؤكّد خلال 24 ساعة يُحرَّر تلقائياً.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">
+            كم نسبة عمولة دبّرني؟
+            <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg>
+          </summary>
+          <div class="faq-a"><p>عمولة المنصة 10٪ تُخصم من المُدبِّر عند تحرير المبلغ. الناشر لا يدفع أي عمولة إضافية.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">
+            ما طرق الدفع المدعومة؟
+            <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg>
+          </summary>
+          <div class="faq-a"><p>مدى، فيزا، ماستركارد، Apple Pay، وSTC Pay. جميع المعاملات مشفّرة بتقنية SSL عبر بوابات دفع مرخّصة من مؤسسة النقد.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">
+            هل بياناتي آمنة؟
+            <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg>
+          </summary>
+          <div class="faq-a"><p>نعم. نلتزم بنظام حماية البيانات الشخصية السعودي (PDPL 2021). بياناتك مشفّرة بأعلى معايير الأمان، محفوظة بشكل آمن، ولا نشاركها مع أي طرف ثالث لأغراض تسويقية.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo logo-footer"><img src="logo.png" alt="دبّرني" /></div>
+          <p>منصة المهمات السعودية الأولى. ربطك بأفضل المُدبِّرين بضمان مالي وأمان.</p>
+          <div class="socials">
+            <a href="https://wa.me/966595822239" aria-label="واتساب">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.17-3.12.82.83-3.04-.2-.32a8.188 8.188 0 0 1-1.26-4.38c.01-4.54 3.7-8.24 8.25-8.24M8.53 7.33c-.16 0-.43.06-.66.31-.22.25-.87.86-.87 2.07 0 1.22.89 2.39 1 2.56.14.17 1.76 2.67 4.25 3.73 2.08.87 2.5.71 2.95.67.46-.05 1.46-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.16-.48-.27-.25-.14-1.47-.74-1.69-.82-.23-.08-.37-.12-.56.12-.16.25-.64.81-.78.97-.15.17-.29.19-.53.07-.26-.13-1.06-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.12-.24-.01-.39.11-.5.11-.11.27-.29.37-.44.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.11-.56-1.35-.77-1.84-.2-.48-.4-.42-.56-.43-.14 0-.3-.01-.47-.01"/></svg>
+            </a>
+            <a href="mailto:hello@dabberni.net" aria-label="بريد">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16v12H4z"/><path d="M4 6l8 7 8-7"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h5>المنتج</h5>
+          <ul>
+            <li><a href="#features">المميّزات</a></li>
+            <li><a href="#how">كيف يعمل</a></li>
+            <li><a href="#faq">الأسئلة الشائعة</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>الشركة</h5>
+          <ul>
+            <li><a href="#">من نحن</a></li>
+            <li><a href="mailto:help@dabberni.net">تواصل معنا</a></li>
+            <li><a href="https://wa.me/966595822239">الدعم عبر واتساب</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>قانوني</h5>
+          <ul>
+            <li><a href="terms.html">شروط الاستخدام</a></li>
+            <li><a href="privacy.html">سياسة الخصوصية</a></li>
+            <li><a href="mailto:privacy@dabberni.net">طلب بياناتي (PDPL)</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        © 2026 دبّرني. جميع الحقوق محفوظة. — صُنع في المملكة العربية السعودية 🇸🇦
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/966595822239?text=السلام%20عليكم%20-%20استفسار%20عن%20دبّرني" class="wa-float" aria-label="تواصل عبر واتساب">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.17-3.12.82.83-3.04-.2-.32a8.188 8.188 0 0 1-1.26-4.38c.01-4.54 3.7-8.24 8.25-8.24M8.53 7.33c-.16 0-.43.06-.66.31-.22.25-.87.86-.87 2.07 0 1.22.89 2.39 1 2.56.14.17 1.76 2.67 4.25 3.73 2.08.87 2.5.71 2.95.67.46-.05 1.46-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.16-.48-.27-.25-.14-1.47-.74-1.69-.82-.23-.08-.37-.12-.56.12-.16.25-.64.81-.78.97-.15.17-.29.19-.53.07-.26-.13-1.06-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.12-.24-.01-.39.11-.5.11-.11.27-.29.37-.44.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.11-.56-1.35-.77-1.84-.2-.48-.4-.42-.56-.43-.14 0-.3-.01-.47-.01"/></svg>
+  </a>
+
+</body>
+</html>
