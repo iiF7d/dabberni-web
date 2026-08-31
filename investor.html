@@ -1,0 +1,1133 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#094A3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23094A3E'/%3E%3Ctext x='50' y='72' font-size='64' font-family='Tajawal,Arial' font-weight='800' fill='%23D4A85A' text-anchor='middle'%3Eد%3C/text%3E%3C/svg%3E"><title>دبّرني — للمستثمرين</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --gold:#D4A85A;
+    --gold-soft:#e8c98a;
+    --green-deep:#094A3E;
+    --green-teal:#0E6B5A;
+    --neutral:#6B7370;
+
+    --bg:#F5F3EC;
+    --bg-elevated:#FFFFFF;
+    --surface:#FFFFFF;
+    --surface-2:#EFECE1;
+    --border:#DCD6C4;
+    --text:#1A231F;
+    --text-dim:#4B5450;
+    --text-faint:#7A8480;
+    --accent:var(--gold);
+    --on-accent:#231607;
+    --brand:var(--green-deep);
+    --brand-teal:var(--green-teal);
+    --shadow: 0 10px 30px -12px rgba(9,74,62,0.18);
+    --glass-bg: rgba(255,255,255,0.55);
+    --glass-border: rgba(9,74,62,0.14);
+    --good:#2f7d5e;
+    --warn:#a8762a;
+    --bad:#b3452f;
+    --radius: 14px;
+  }
+
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#081310;
+      --bg-elevated:#0C1B16;
+      --surface:#0F221C;
+      --surface-2:#122A22;
+      --border: rgba(212,168,90,0.16);
+      --text:#EDEFE8;
+      --text-dim:#B9C4BE;
+      --text-faint:#83938C;
+      --shadow: 0 20px 50px -20px rgba(0,0,0,0.6);
+      --glass-bg: rgba(15,34,28,0.55);
+      --glass-border: rgba(212,168,90,0.18);
+      --good:#5fbf95;
+      --warn:#e0b15c;
+      --bad:#e0806a;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#081310;
+    --bg-elevated:#0C1B16;
+    --surface:#0F221C;
+    --surface-2:#122A22;
+    --border: rgba(212,168,90,0.16);
+    --text:#EDEFE8;
+    --text-dim:#B9C4BE;
+    --text-faint:#83938C;
+    --shadow: 0 20px 50px -20px rgba(0,0,0,0.6);
+    --glass-bg: rgba(15,34,28,0.55);
+    --glass-border: rgba(212,168,90,0.18);
+    --good:#5fbf95;
+    --warn:#e0b15c;
+    --bad:#e0806a;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:"Tajawal","Segoe UI",sans-serif;
+    direction:rtl;
+    line-height:1.85;
+    font-size:16.5px;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{ background:var(--gold); color:var(--on-accent); }
+
+  h1,h2,h3,h4{
+    font-family:"Cairo","Tajawal",sans-serif;
+    color:var(--text);
+    text-wrap:balance;
+    margin:0;
+  }
+  .num{ font-family:"JetBrains Mono",monospace; direction:ltr; unicode-bidi:isolate; font-variant-numeric:tabular-nums; }
+  a{ color:var(--brand-teal); }
+  :root[data-theme="dark"] a, @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]) a { color:#7fd6bc; } }
+
+  a:focus-visible, button:focus-visible, summary:focus-visible{
+    outline:2px solid var(--gold); outline-offset:3px; border-radius:4px;
+  }
+
+  /* ---------- layout shell ---------- */
+  .shell{ display:flex; min-height:100vh; }
+  .toc{
+    width:270px; flex:0 0 270px;
+    position:sticky; top:0; align-self:flex-start; height:100vh;
+    overflow-y:auto;
+    padding:28px 20px;
+    border-left:1px solid var(--border);
+    background:var(--bg-elevated);
+  }
+  .toc-brand{ display:flex; align-items:center; gap:10px; margin-bottom:22px; }
+  .toc-mark{
+    width:34px;height:34px;border-radius:9px;
+    background:linear-gradient(155deg, var(--green-teal), var(--green-deep));
+    display:flex;align-items:center;justify-content:center;
+    color:var(--gold); font-family:"Cairo"; font-weight:900; font-size:15px;
+    box-shadow: inset 0 0 0 1px rgba(212,168,90,0.35);
+  }
+  .toc-brand b{ font-family:"Cairo"; font-weight:800; font-size:16px; }
+  .toc-brand span{ display:block; font-size:11px; color:var(--text-faint); }
+  .toc nav{ display:flex; flex-direction:column; gap:2px; }
+  .toc a{
+    display:flex; gap:8px; align-items:baseline;
+    text-decoration:none; color:var(--text-dim);
+    font-size:13.5px; padding:7px 10px; border-radius:8px;
+    transition:background .15s, color .15s;
+  }
+  .toc a:hover{ background:var(--surface-2); color:var(--text); }
+  .toc a .n{ font-family:"JetBrains Mono",monospace; color:var(--gold); font-size:11.5px; direction:ltr; }
+  .toc-foot{ margin-top:22px; padding-top:16px; border-top:1px solid var(--border); font-size:11px; color:var(--text-faint); }
+  .toc-toggle{ display:none; }
+
+  main{ flex:1 1 auto; min-width:0; }
+
+  /* ---------- cover ---------- */
+  .cover{
+    position:relative; overflow:hidden;
+    padding:min(11vw,120px) 7vw 90px;
+    background:
+      radial-gradient(1100px 620px at 85% -10%, rgba(212,168,90,0.16), transparent 60%),
+      radial-gradient(900px 500px at -10% 110%, rgba(14,107,90,0.35), transparent 60%),
+      linear-gradient(160deg, var(--green-deep) 0%, #06231c 78%);
+    color:#F3EFE2;
+  }
+  .cover::after{
+    content:""; position:absolute; inset:0; pointer-events:none; opacity:.5;
+    background-image: repeating-linear-gradient(115deg, rgba(255,255,255,0.025) 0 2px, transparent 2px 90px);
+  }
+  .cover-kicker{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.06em;
+    color:var(--gold-soft); border:1px solid rgba(212,168,90,0.4);
+    padding:6px 14px; border-radius:999px; background:rgba(212,168,90,0.08);
+    margin-bottom:28px;
+  }
+  .cover h1{
+    font-size:clamp(2.6rem, 6vw, 4.6rem); color:#FBF8EF; font-weight:900;
+    line-height:1.15; margin-bottom:10px;
+  }
+  .cover h1 em{ font-style:normal; color:var(--gold); }
+  .cover .tagline{
+    font-size:clamp(1.05rem,2vw,1.35rem); color:#CFE6DD; max-width:760px; margin-bottom:38px;
+    font-weight:400;
+  }
+  .cover-meta{
+    display:flex; flex-wrap:wrap; gap:14px; margin-bottom:46px;
+  }
+  .chip{
+    font-size:12.5px; color:#E7F2EC; background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.14); padding:8px 14px; border-radius:10px;
+    font-family:"JetBrains Mono",monospace;
+  }
+  .chip b{ color:var(--gold); font-weight:600; }
+  .cover-grid{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:1px;
+    background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.12);
+    border-radius:16px; overflow:hidden; backdrop-filter:blur(6px);
+  }
+  .cover-grid .cell{ background:rgba(8,25,20,0.55); padding:20px 22px; }
+  .cover-grid .cell .k{ font-size:26px; font-family:"Cairo"; font-weight:800; color:#FBF8EF; }
+  .cover-grid .cell .l{ font-size:12px; color:#B9CFC6; margin-top:4px; }
+
+  /* ---------- sections ---------- */
+  section.doc{ padding:70px 7vw; max-width:1180px; margin:0 auto; }
+  section.doc.alt{ background:var(--surface-2); }
+  .sec-eyebrow{
+    display:flex; align-items:center; gap:10px; margin-bottom:14px;
+  }
+  .sec-eyebrow .idx{
+    font-family:"JetBrains Mono",monospace; color:var(--gold); font-size:13px;
+    border:1px solid var(--border); padding:3px 10px; border-radius:999px; background:var(--bg-elevated);
+  }
+  .sec-eyebrow .lbl{ font-size:12.5px; letter-spacing:.08em; color:var(--text-faint); text-transform:uppercase; font-family:"JetBrains Mono",monospace; }
+  h2.title{ font-size:clamp(1.7rem,3vw,2.35rem); font-weight:800; margin-bottom:8px; }
+  h2.title .sub{ display:block; font-family:"JetBrains Mono",monospace; font-size:14px; color:var(--brand-teal); font-weight:500; margin-top:6px; }
+  .lede{ font-size:17.5px; color:var(--text-dim); max-width:78ch; margin:18px 0 36px; }
+
+  h3{ font-size:1.28rem; font-weight:700; margin:38px 0 14px; padding-right:14px; border-right:3px solid var(--gold); }
+  h4{ font-size:1.04rem; font-weight:700; margin:22px 0 10px; color:var(--brand-teal); }
+  p{ margin:0 0 16px; max-width:75ch; color:var(--text-dim); }
+  p.tight{ max-width:none; }
+  ul,ol{ margin:0 0 18px; padding-inline-start:22px; color:var(--text-dim); max-width:75ch; }
+  li{ margin-bottom:8px; }
+  strong{ color:var(--text); font-weight:700; }
+  .callout{
+    border:1px solid var(--glass-border); background:var(--glass-bg); backdrop-filter:blur(8px);
+    border-radius:var(--radius); padding:18px 22px; margin:20px 0; max-width:78ch;
+  }
+  .callout.warn{ border-color: rgba(168,118,42,0.4); }
+  .callout .tag{ font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--gold); letter-spacing:.05em; margin-bottom:6px; display:block; }
+
+  /* tables */
+  .tbl-wrap{ overflow-x:auto; margin:20px 0 28px; border:1px solid var(--border); border-radius:var(--radius); }
+  table{ width:100%; border-collapse:collapse; min-width:560px; background:var(--bg-elevated); }
+  thead th{
+    text-align:right; font-family:"Cairo"; font-size:13px; font-weight:700;
+    color:var(--brand-teal); background:var(--surface-2);
+    padding:12px 16px; border-bottom:1px solid var(--border); white-space:nowrap;
+  }
+  tbody td{ padding:12px 16px; border-bottom:1px solid var(--border); font-size:14.5px; color:var(--text-dim); vertical-align:top; }
+  tbody tr:last-child td{ border-bottom:none; }
+  tbody td.num, thead th.num{ font-family:"JetBrains Mono",monospace; direction:ltr; text-align:left; }
+  tbody tr:hover{ background:var(--surface-2); }
+  td strong, th strong{ color:var(--text); }
+  .pos{ color:var(--good); font-weight:600; }
+  .neg{ color:var(--bad); font-weight:600; }
+  .mid{ color:var(--warn); font-weight:600; }
+
+  /* cards */
+  .grid{ display:grid; gap:16px; margin:24px 0; }
+  .grid.c2{ grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); }
+  .grid.c3{ grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); }
+  .grid.c4{ grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); }
+  .card{
+    background:var(--bg-elevated); border:1px solid var(--border); border-radius:var(--radius);
+    padding:20px 22px; box-shadow:var(--shadow);
+  }
+  .card h4{ margin-top:0; }
+  .card p{ font-size:14.5px; margin-bottom:0; }
+  .card .stat{ font-family:"Cairo"; font-weight:800; font-size:1.9rem; color:var(--gold); margin-bottom:4px; }
+  .card .stat .u{ font-size:0.95rem; color:var(--text-faint); font-family:"Tajawal"; font-weight:500; }
+
+  /* palette swatches */
+  .swatches{ display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:14px; margin:22px 0; }
+  .swatch{ border-radius:var(--radius); overflow:hidden; border:1px solid var(--border); background:var(--bg-elevated); }
+  .swatch .fill{ height:88px; }
+  .swatch .info{ padding:12px 14px; }
+  .swatch .info .name{ font-family:"Cairo"; font-weight:700; font-size:13.5px; }
+  .swatch .info .hex{ font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--text-faint); direction:ltr; text-align:left; }
+
+  /* type specimen */
+  .specimen{ border:1px solid var(--border); border-radius:var(--radius); padding:22px 26px; background:var(--bg-elevated); margin:18px 0; }
+  .specimen .role{ font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--text-faint); letter-spacing:.05em; text-transform:uppercase; margin-bottom:6px; }
+  .specimen .sample{ margin-bottom:4px; }
+
+  /* journey steps */
+  .journey{ display:flex; flex-direction:column; gap:0; margin:22px 0 30px; }
+  .step{ display:flex; gap:18px; position:relative; padding-bottom:26px; }
+  .step:last-child{ padding-bottom:0; }
+  .step .rail{ display:flex; flex-direction:column; align-items:center; flex:0 0 auto; }
+  .step .dot{
+    width:34px;height:34px;border-radius:10px; background:var(--green-deep); color:var(--gold);
+    display:flex;align-items:center;justify-content:center; font-family:"JetBrains Mono",monospace; font-weight:600; font-size:13px;
+    flex:0 0 auto; box-shadow:inset 0 0 0 1px rgba(212,168,90,.4);
+  }
+  .step .line{ width:2px; flex:1 1 auto; background:var(--border); margin-top:4px; }
+  .step .body{ padding-top:4px; }
+  .step .body h5{ font-family:"Cairo"; font-weight:700; font-size:15.5px; margin:0 0 4px; color:var(--text); }
+  .step .body p{ margin:0; font-size:14px; }
+
+  /* escrow diagram */
+  .flow{ display:flex; align-items:stretch; gap:10px; flex-wrap:wrap; margin:24px 0; }
+  .flow .box{
+    flex:1 1 160px; background:var(--bg-elevated); border:1px solid var(--border); border-radius:12px;
+    padding:16px; text-align:center; position:relative;
+  }
+  .flow .box .t{ font-family:"Cairo"; font-weight:700; font-size:13.5px; margin-bottom:4px; }
+  .flow .box .d{ font-size:12px; color:var(--text-faint); }
+  .flow .box.hold{ border-color:var(--gold); background:linear-gradient(180deg, rgba(212,168,90,.08), transparent); }
+  .flow .arrow{ display:flex; align-items:center; justify-content:center; color:var(--text-faint); font-size:20px; flex:0 0 auto; }
+
+  /* roadmap timeline */
+  .rmap{ position:relative; padding-inline-start:0; margin:26px 0; }
+  .rmap .phase{ display:grid; grid-template-columns:150px 1fr; gap:20px; padding:20px 0; border-bottom:1px dashed var(--border); }
+  .rmap .phase:last-child{ border-bottom:none; }
+  .rmap .phase .when{ font-family:"JetBrains Mono",monospace; color:var(--gold); font-size:13px; padding-top:2px; }
+  .rmap .phase h5{ font-family:"Cairo"; font-weight:700; font-size:16px; margin:0 0 8px; }
+  .status{ display:inline-flex; align-items:center; gap:6px; font-size:11.5px; padding:3px 10px; border-radius:999px; font-family:"JetBrains Mono",monospace; margin-inline-end:8px; }
+  .status.done{ background:rgba(47,125,94,.14); color:var(--good); }
+  .status.wip{ background:rgba(168,118,42,.14); color:var(--warn); }
+  .status.next{ background:rgba(107,115,112,.16); color:var(--text-faint); }
+
+  /* competitive matrix legend */
+  .legend{ display:flex; gap:18px; flex-wrap:wrap; font-size:12.5px; color:var(--text-faint); margin-bottom:14px; }
+  .legend .dot{ width:9px;height:9px;border-radius:50%; display:inline-block; margin-inline-end:6px; }
+
+  blockquote{
+    margin:26px 0; padding:4px 26px 4px 0; border-right:3px solid var(--brand-teal);
+    font-family:"Cairo"; font-size:1.15rem; font-weight:600; color:var(--text); max-width:70ch;
+    font-style:normal;
+  }
+  blockquote span{ display:block; margin-top:10px; font-family:"Tajawal"; font-size:13px; font-weight:400; color:var(--text-faint); }
+
+  .sources{ font-size:13px; color:var(--text-faint); }
+  .sources li{ margin-bottom:6px; }
+
+  footer.doc{
+    padding:50px 7vw 80px; text-align:center; background:var(--green-deep); color:#DCEAE4;
+  }
+  footer.doc .mark{ font-family:"Cairo"; font-weight:900; font-size:22px; color:var(--gold); margin-bottom:8px; }
+  footer.doc p{ color:#B9CFC6; max-width:60ch; margin:0 auto 6px; font-size:13px; }
+
+  @media (max-width: 900px){
+    .toc{ position:fixed; z-index:40; inset-inline-end:0; top:0; height:100vh; transform:translateX(105%); transition:transform .25s ease; box-shadow:-10px 0 30px rgba(0,0,0,.3); }
+    .toc.open{ transform:translateX(0); }
+    .toc-toggle{
+      display:flex; position:fixed; z-index:41; top:16px; inset-inline-end:16px;
+      width:44px;height:44px;border-radius:12px; background:var(--green-deep); color:var(--gold);
+      align-items:center; justify-content:center; border:1px solid rgba(212,168,90,.4); cursor:pointer;
+      font-size:18px;
+    }
+    section.doc{ padding:52px 6vw; }
+  }</style>
+<style>
+  #gate{position:fixed;inset:0;z-index:999;display:flex;align-items:center;justify-content:center;
+    background:
+      radial-gradient(1100px 620px at 85% -10%, rgba(212,168,90,0.16), transparent 60%),
+      radial-gradient(900px 500px at -10% 110%, rgba(14,107,90,0.35), transparent 60%),
+      linear-gradient(160deg, #094A3E 0%, #06231c 78%);
+    padding:24px;
+  }
+  .gate-card{max-width:380px;width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(212,168,90,0.3);
+    border-radius:20px;padding:40px 32px;text-align:center;backdrop-filter:blur(10px);box-shadow:0 30px 80px rgba(0,0,0,.4);}
+  .gate-mark{width:56px;height:56px;margin:0 auto 18px;border-radius:16px;background:linear-gradient(155deg,#0E6B5A,#094A3E);
+    display:flex;align-items:center;justify-content:center;color:#D4A85A;font-family:"Cairo",sans-serif;font-weight:900;font-size:26px;
+    box-shadow:inset 0 0 0 1px rgba(212,168,90,0.4);}
+  .gate-card h1{font-family:"Cairo",sans-serif;color:#FBF8EF;font-size:1.5rem;font-weight:800;margin-bottom:8px;}
+  .gate-card p{color:#CFE6DD;font-size:14px;margin-bottom:24px;font-family:"Tajawal",sans-serif;}
+  #gateForm{display:flex;flex-direction:column;gap:12px;}
+  #gateInput{background:rgba(255,255,255,0.08);border:1px solid rgba(212,168,90,0.35);color:#FBF8EF;
+    border-radius:10px;padding:14px 16px;font-size:18px;text-align:center;letter-spacing:4px;font-family:"JetBrains Mono",monospace;}
+  #gateInput::placeholder{color:rgba(255,255,255,0.4);letter-spacing:normal;font-family:"Tajawal",sans-serif;}
+  #gateInput:focus{outline:none;border-color:#D4A85A;}
+  #gateForm button{background:#D4A85A;color:#231607;border:none;border-radius:10px;padding:13px;font-weight:800;
+    font-size:15px;font-family:"Cairo",sans-serif;cursor:pointer;transition:filter .15s;}
+  #gateForm button:hover{filter:brightness(1.08);}
+  .gate-error{margin-top:14px;color:#e0806a;font-size:13px;font-family:"Tajawal",sans-serif;}
+  .gate-shake{animation:gshake .4s;}
+  @keyframes gshake{10%,90%{transform:translateX(-2px)}20%,80%{transform:translateX(4px)}30%,50%,70%{transform:translateX(-8px)}40%,60%{transform:translateX(8px)}}
+  #doc[hidden]{display:none !important;}
+</style>
+</head>
+<body>
+<div id="gate">
+  <div class="gate-card">
+    <div class="gate-mark">د</div>
+    <h1>دبّرني للمستثمرين</h1>
+    <p>هذه الصفحة سرّية وتتطلب رمز دخول.</p>
+    <form id="gateForm" autocomplete="off">
+      <input type="password" id="gateInput" inputmode="numeric" pattern="[0-9]*" placeholder="رمز الدخول" autofocus />
+      <button type="submit">دخول</button>
+    </form>
+    <div id="gateError" class="gate-error" hidden>الرمز غير صحيح — حاول مرة أخرى.</div>
+  </div>
+</div>
+<div id="doc" hidden><div class="toc-toggle" id="tocToggle" role="button" aria-label="فهرس المحتويات" tabindex="0">☰</div>
+
+<div class="shell">
+  <aside class="toc" id="tocPanel">
+    <div class="toc-brand">
+      <div class="toc-mark">د</div>
+      <div><b>دبّرني</b><span>الوثيقة الشاملة v1.0</span></div>
+    </div>
+    <nav>
+      <a href="#cover"><span class="n">00</span> الغلاف</a>
+      <a href="#s1"><span class="n">01</span> النشأة والمؤسس</a>
+      <a href="#s2"><span class="n">02</span> الهوية ونظام التصميم</a>
+      <a href="#s3"><span class="n">03</span> دراسة السوق</a>
+      <a href="#s4"><span class="n">04</span> المعمارية التقنية</a>
+      <a href="#s5"><span class="n">05</span> رؤية 2030</a>
+      <a href="#s6"><span class="n">06</span> الجدوى المالية</a>
+      <a href="#s7"><span class="n">07</span> التسويق والاستحواذ</a>
+      <a href="#s8"><span class="n">08</span> خارطة الطريق</a>
+      <a href="#s9"><span class="n">09</span> مقترحات استراتيجية</a>
+      <a href="#sources"><span class="n">10</span> المصادر</a>
+    </nav>
+    <div class="toc-foot">
+      سرّي — لغرض التقديم للمستثمرين والجهات الداعمة فقط.<br>
+      إعداد: فهد بن سعد — 2026/08/31
+    </div>
+  </aside>
+
+  <main>
+    <section class="cover" id="cover">
+      <span class="cover-kicker">CONFIDENTIAL · PRODUCT &amp; TECHNICAL SPECIFICATION BLUEPRINT</span>
+      <h1>دبّـرني <em>.</em><br>أبشر بي.</h1>
+      <p class="tagline">
+        منصّة السوق العكسي (Reverse Marketplace) الأولى من نوعها في السعودية لمهمّات
+        التعقيب والخدمات الميدانية اليومية — مزايدة شفّافة، وضمان مالي (Escrow) حقيقي
+        على كل ريال، بدل الفوضى وانعدام الثقة في القنوات التقليدية.
+      </p>
+      <div class="cover-meta">
+        <span class="chip">الإصدار <b>1.0</b></span>
+        <span class="chip">2026/08/31</span>
+        <span class="chip">Flutter · Supabase · PostGIS</span>
+        <span class="chip">dabberni.net</span>
+      </div>
+      <div class="cover-grid">
+        <div class="cell"><div class="k">45</div><div class="l">Migration رقم آخر تحديث لقاعدة البيانات</div></div>
+        <div class="cell"><div class="k">4</div><div class="l">مدن انطلاق: الرياض، جدة، الدمام، مكة</div></div>
+        <div class="cell"><div class="k">10%</div><div class="l">عمولة الصفقة الأساسية</div></div>
+        <div class="cell"><div class="k">0</div><div class="l">حوادث تسريب مالي منذ التحصين</div></div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 1 — FOUNDER STORY -->
+    <!-- ============================================================ -->
+    <section class="doc" id="s1">
+      <div class="sec-eyebrow"><span class="idx">01</span><span class="lbl">Founder's Story &amp; Origin</span></div>
+      <h2 class="title">قصة النشأة والمبرمج<span class="sub">من معاناة يومية إلى بنية سوق كاملة</span></h2>
+      <p class="lede">
+        دبّرني لم يبدأ كخطة عمل مكتوبة على ورق قبل الكود — بدأ كردّة فعل مباشرة على مشكلة
+        يعيشها كل بيت سعودي تقريباً: الحاجة إلى "مُدبِّر" لمهمة صغيرة، وغياب أي سوق منظّم
+        يوصلك به بثقة.
+      </p>
+
+      <h3>المشكلة كما تُعاش، لا كما تُروى في التقارير</h3>
+      <p>
+        أي شخص احتاج يوماً لتعقيب معاملة حكومية، أو نقل أثاث، أو تنظيف شقة، أو تجميع
+        غرفة نوم، يعرف النمط نفسه: يبدأ برسالة في مجموعة واتساب عائلية أو حي سكني يسأل
+        "أحد يعرف حد يسوّي كذا؟"، يحصل على 3-4 أرقام متفرقة، يتفاوض على السعر بلا أي
+        مرجعية لسعر عادل، ثم يواجه معضلة الدفع: يدفع مقدماً ويخاطر بألا يظهر أحد، أو
+        يرفض الدفع مقدماً ويخاطر بأن يرفض مقدّم الخدمة العمل بعد الوصول. لا تسعير مرجعي،
+        لا تقييم موثوق، ولا أي طرف ثالث يحفظ حق الطرفين إذا ساءت الأمور.
+      </p>
+      <p>
+        هذه ليست مشكلة تقنية بالدرجة الأولى — هي مشكلة <strong>غياب سوق</strong>. المعقّبون
+        ومقدّمو الخدمات المستقلون موجودون بأعداد كبيرة، والطلب موجود يومياً، لكن لا توجد
+        آلية تُسعّر العرض والطلب بشفافية ولا تحمي المال أثناء تنفيذ المهمة.
+      </p>
+
+      <h3>من "مشغّل نهاية طرفية" إلى مؤسس منتج مالي-تقني</h3>
+      <p>
+        بُني دبّرني بيد مؤسس واحد يجمع خلفية غير تقليدية لهذا النوع من المشاريع: بكالوريوس
+        شريعة من جامعة الطائف (2018)، إلى جانب عمل مستمر كمشغّل نهاية طرفية منذ التخرّج،
+        وتطوّع سابق في الدعم الفني لموقع "تويستو" (2015). لم يأتِ من معسكر برمجة مكثّف
+        ولا من شركة تقنية كبرى — تعلّم Flutter وSwift وهندسة قواعد بيانات Supabase (بما
+        فيها سياسات الحماية على مستوى الصفوف RLS ودوال Edge Functions) ذاتياً أثناء بناء
+        المنتج نفسه، مدعوماً بدورات عملية مثل Linux 101 وCommand-line 101/102، ودورة
+        "خطوات في السوق" من الهيئة العامة للمنشآت الصغيرة والمتوسطة (منشآت).
+      </p>
+      <blockquote>
+        الفكرة لم تكن "نبني تطبيق توصيل آخر" — كانت أقرب لسؤال: لماذا يوجد سوق أسهم منظّم
+        لكل شيء تقريباً، ولا يوجد سوق منظّم لأبسط مهمة يحتاجها بيت سعودي كل أسبوع؟
+        <span>إعادة صياغة لفلسفة المنتج التأسيسية</span>
+      </blockquote>
+
+      <h3>من الفكرة إلى بنية "سوق عكسي" حقيقية</h3>
+      <p>
+        الحل الذي استقرّ عليه المؤسس ليس "منصة إعلانات" تشبه حراج، ولا "تطبيق توصيل" يشبه
+        منصات التوصيل الحالية. هو <strong>سوق عكسي (Reverse Marketplace)</strong>: الناشر
+        (طالب الخدمة) ينشر المهمة والميزانية التقريبية، ومقدّمو الخدمة (المُدبِّرون)
+        يتنافسون بعروض أسعار مرئية للجميع — العكس التام لنموذج "بائع واحد يعرض سعراً
+        ثابتاً" السائد في حراج والمتاجر الإلكترونية. هذا القلب في الاتجاه هو ما يفرض
+        شفافية السعر تلقائياً: التنافس نفسه يكشف السعر العادل، لا إعلان تسويقي يدّعيه.
+      </p>
+      <p>
+        الشق الثاني، وهو الأصعب هندسياً والأهم ثقةً، كان بناء نظام <strong>ضمان مالي
+        (Escrow)</strong> حقيقي: يُحجز مبلغ المهمة في محفظة داخل التطبيق عند قبول عرض،
+        ولا يُصرف لمقدّم الخدمة إلا بعد تأكيد إتمام المهمة، مع دفتر حركة مالية (Ledger)
+        لا يُعدَّل ولا يُحذف منه أبداً — فقط إضافة سجلات جديدة (Append-only)، بنفس
+        المنطق الذي تُبنى عليه الأنظمة المصرفية الجادة، وليس مجرّد رقم في جدول قابل
+        للتعديل.
+      </p>
+
+      <div class="callout">
+        <span class="tag">لماذا يهم هذا للمستثمر</span>
+        هذا المنتج لم يُبنَ من صفر بلا سابق خبرة مالية-تقنية عشوائياً — بُني بمنهجية
+        تدقيق أمني متكررة على كل تغيير حسّاس في قاعدة البيانات (تفصيل كامل في القسم 04)،
+        وهو ما يفسّر لماذا لا يزال شحن المحفظة الحقيقي (Moyasar) معطّلاً عمداً حتى تاريخه
+        — قرار مؤسس صريح بعدم إطلاق أي تدفّق مالي حقيقي قبل اكتمال التحصين الكامل.
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 2 — VISUAL IDENTITY -->
+    <!-- ============================================================ -->
+    <section class="doc alt" id="s2">
+      <div class="sec-eyebrow"><span class="idx">02</span><span class="lbl">Visual Identity &amp; Design System</span></div>
+      <h2 class="title">الهوية البصرية ونظام التصميم<span class="sub">Dark Mode أولاً، زجاج معتم، وذهب كإشارة قرار</span></h2>
+      <p class="lede">
+        الفلسفة التصميمية لدبّرني مبنية على فكرة واحدة: التطبيق يتعامل مع أموال حقيقية،
+        فيجب أن يبدو <strong>جاداً وموثوقاً</strong> بصرياً، لا "مرحاً" بألوان صاخبة كتطبيقات
+        التوصيل العادية. من هنا جاء اختيار الأخضر الداكن العميق كأساس، والذهبي كإشارة
+        وحيدة للقرار والاختيار.
+      </p>
+
+      <h3>الفلسفة: Dark Mode + Glassmorphism + Flat 3D</h3>
+      <ul>
+        <li><strong>Dark Mode كوضع أساسي لا كخيار ثانوي:</strong> الخلفيات الداكنة المتدرجة (من أخضر عميق إلى أسود مائل للأخضر) تقلّل الإجهاد البصري في الاستخدام المسائي المتكرر — النمط الغالب لنشر المهمات وتصفّح العروض بعد الدوام.</li>
+        <li><strong>Glassmorphism محسوب لا مفرط فيه:</strong> طبقات "زجاج معتم" (خلفية شبه شفافة + ضبابية Blur) تُستخدم حصراً في العناصر العائمة والبطاقات التي تحتاج فصلاً بصرياً عن الخلفية (نافذة تأكيد عرض، بطاقة رصيد المحفظة) — وليس كتأثير زخرفي على كل عنصر.</li>
+        <li><strong>Flat 3D للأزرار والبطاقات التفاعلية:</strong> ظلال ناعمة وحواف مرتفعة قليلاً بدل الأزرار المسطحة التماماً، لإعطاء إحساساً بأن العنصر "قابل للضغط" فعلياً — مهم في شاشات تتضمن قرارات مالية (تأكيد عرض، تحرير مبلغ محجوز).</li>
+      </ul>
+
+      <h3>لوحة الألوان الرسمية</h3>
+      <p>الألوان الموثّقة فعلياً في ملفات الهوية والعروض المُعتمدة لدبّرني:</p>
+      <div class="swatches">
+        <div class="swatch">
+          <div class="fill" style="background:#094A3E;"></div>
+          <div class="info"><div class="name">الأخضر العميق الداكن</div><div class="hex">#094A3E</div></div>
+        </div>
+        <div class="swatch">
+          <div class="fill" style="background:#0E6B5A;"></div>
+          <div class="info"><div class="name">الأخضر الزمردي / تركوازي</div><div class="hex">#0E6B5A</div></div>
+        </div>
+        <div class="swatch">
+          <div class="fill" style="background:#D4A85A;"></div>
+          <div class="info"><div class="name">الذهبي الملكي (Accent)</div><div class="hex">#D4A85A</div></div>
+        </div>
+        <div class="swatch">
+          <div class="fill" style="background:#6B7370;"></div>
+          <div class="info"><div class="name">الرمادي المحايد</div><div class="hex">#6B7370</div></div>
+        </div>
+      </div>
+      <div class="callout">
+        <span class="tag">ملاحظة دقّة</span>
+        بعض المواد التسويقية الأولية استخدمت تدرّجاً مقارباً (مثل #0F3D2E) كأخضر أساسي —
+        القيمة المعتمدة رسمياً في ملفات الهوية والدراسات المُعدّة سابقاً هي <span class="num">#094A3E</span>.
+        يوصى بتوحيد كل المخرجات القادمة (Pitch Deck، الموقع، المتجر) على القيم الأربع
+        أعلاه حرفياً لتفادي أي تذبذب بصري بين المواد.
+      </div>
+
+      <h4>قواعد الاستخدام</h4>
+      <ul>
+        <li>الأخضر العميق (<span class="num">#094A3E</span>) للخلفيات الكبرى والعناصر الهيكلية — أبداً كلون نص على خلفية فاتحة.</li>
+        <li>التركوازي (<span class="num">#0E6B5A</span>) للعناصر التفاعلية الثانوية: روابط، أيقونات حالة، تمييز بيانات حيّة.</li>
+        <li>الذهبي (<span class="num">#D4A85A</span>) محجوز حصراً لإشارات القرار: زر أساسي، حالة "مقبول"، تمييز أعلى عرض في المزايدة. استخدامه في أكثر من عنصر واحد بالشاشة يُضعف قوته كإشارة.</li>
+        <li>الرمادي المحايد (<span class="num">#6B7370</span>) للنصوص الثانوية والحدود الفاصلة فقط.</li>
+      </ul>
+
+      <h3>النظام الطباعي</h3>
+      <div class="specimen">
+        <div class="role">العناوين العربية — Cairo (وزن 700–900)</div>
+        <div class="sample" style="font-family:'Cairo'; font-weight:800; font-size:1.6rem;">دبّرني، أبشر بي</div>
+        <p style="margin:0; font-size:13px;">تُستخدم للعناوين الرئيسية وشعارات الشاشة والأرقام البارزة في لوحات التحكّم — وضوح هندسي قوي يناسب سياقات القرار السريع.</p>
+      </div>
+      <div class="specimen">
+        <div class="role">النصوص الأساسية — Tajawal (وزن 400 و500)</div>
+        <div class="sample" style="font-family:'Tajawal'; font-weight:400; font-size:1.05rem;">هذا هو الخط الفعلي المستخدم داخل تطبيق دبّرني نفسه — لجميع النصوص التشغيلية، وصف المهمات، والمحادثات.</div>
+        <p style="margin:0; font-size:13px;">اختير Tajawal تحديداً لدعمه الكامل للأوزان المتعددة وقراءته المريحة في فقرات طويلة (وصف مهمة، شروط الاتفاق) على شاشات الجوال.</p>
+      </div>
+      <div class="specimen">
+        <div class="role">الأرقام والبيانات التقنية — JetBrains Mono</div>
+        <div class="sample num" style="font-size:1.15rem;">SAR 1,240.00 · #ESC-0452 · 10%</div>
+        <p style="margin:0; font-size:13px;">خط أحادي المسافة (Monospace) لكل رقم مالي، معرّف عملية، أو قيمة تقنية — يمنع الالتباس بين الأرقام المتشابهة (0/O، 1/l) في سياقات حسّاسة كالمحفظة وسجل الحركات.</p>
+      </div>
+
+      <h3>لغة المكوّنات</h3>
+      <p>
+        البطاقات (Cards) هي الوحدة البصرية الأساسية في كل شاشة تقريباً — بطاقة مهمة، بطاقة
+        عرض، بطاقة مُدبِّر. زوايا دائرية متوسطة (لا حادة ولا مبالغ في استدارتها)، وظل
+        خفيف يوحي بالطبقات دون ثقل بصري. الأيقونات خطّية (Outline) بسيطة تتحوّل لأيقونة
+        مملوءة بالذهبي عند التفعيل — إشارة اختيار واحدة ومتّسقة عبر كامل التطبيق.
+      </p>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 3 — MARKET ANALYSIS -->
+    <!-- ============================================================ -->
+    <section class="doc" id="s3">
+      <div class="sec-eyebrow"><span class="idx">03</span><span class="lbl">Saudi Market Analysis</span></div>
+      <h2 class="title">دراسة السوق السعودي<span class="sub">TAM · SAM · SOM ومصفوفة المنافسة</span></h2>
+      <p class="lede">
+        السوق الذي يستهدفه دبّرني يقع في تقاطع ثلاثة قطاعات رقمية سعودية تنمو جميعها
+        بمعدلات معتبرة: الإعلانات المبوّبة الرقمية، منصات العمل الحر، والمدفوعات
+        الرقمية. الأرقام أدناه من مصادر رسمية ومصادر أبحاث سوق مستقلة (مرجعية كاملة في
+        القسم 10)، مع تمييز واضح بين الرقم المرجعي والتقدير المبني عليه.
+      </p>
+
+      <h3>لقطة السوق الكلي (أرقام مرجعية)</h3>
+      <div class="grid c4">
+        <div class="card"><div class="stat">36.68<span class="u"> م</span></div><p>عدد سكان السعودية المقدَّر 2026 — Data­Reportal</p></div>
+        <div class="card"><div class="stat">99<span class="u">%</span></div><p>نسبة انتشار الإنترنت (~34.4 مليون مستخدم) — DataReportal 2025</p></div>
+        <div class="card"><div class="stat">1.2<span class="u"> مليار $</span></div><p>حجم سوق الإعلانات المبوّبة الرقمية السعودي — Ken Research</p></div>
+        <div class="card"><div class="stat">1.8<span class="u"> م</span></div><p>عدد العاملين المستقلين (فريلانسرز) في السعودية — تقرير سوق منصات العمل الحر 2025</p></div>
+      </div>
+
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>المؤشر</th><th class="num">القيمة</th><th>المصدر / الحالة</th></tr></thead>
+          <tbody>
+            <tr><td>مساهمة الاقتصاد الرقمي في الناتج المحلي</td><td class="num">16.0%<br><span style="color:var(--text-faint)">(هدف 19.2% بحلول 2030)</span></td><td>الهيئة العامة للإحصاء (GASTAT) 2024 / رؤية 2030</td></tr>
+            <tr><td>حجم سوق منصات العمل الحر</td><td class="num">$145–158.5M (2025)<br>→ $472.7M (2033)</td><td>تقديرات متعددة (CAGR≈15.3%) — تباين بين مصدرين</td></tr>
+            <tr><td>نسبة المعاملات غير النقدية (Cashless)</td><td class="num">79% (ديسمبر 2025)</td><td>هدف ساما 70% تحقق مبكراً 2023 — الهدف الجديد 80% بحلول 2030</td></tr>
+            <tr><td>مساهمة المنشآت الصغيرة والمتوسطة في الناتج المحلي</td><td class="num">20%–28%<br>(هدف 35% بحلول 2030)</td><td>منشآت — تباين بين المصادر حول الرقم الحالي الدقيق</td></tr>
+            <tr><td>حجم سوق التجارة الإلكترونية</td><td class="num">≈ 100 مليار ريال (2025)</td><td>تقديرات سوق مجمّعة</td></tr>
+            <tr><td>زوّار منصة حراج (أكبر مبوّبة محلية)</td><td class="num">≈ 50 مليون زيارة/شهر<br>≈ 50 ألف إعلان جديد/يوم</td><td>بيانات تشغيلية معلنة عن حراج</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>نموذج TAM · SAM · SOM</h3>
+      <p>
+        لا يوجد تقرير سوق رسمي مخصّص لفئة "وساطة المهمّات الميدانية بالمزايدة" في
+        السعودية بحد ذاتها — لذلك تم بناء النموذج التالي بأسلوب Bottom-Up مبني على
+        افتراضات صريحة موضّحة تحت كل رقم، وليس كرقم منقول حرفياً من تقرير طرف ثالث.
+      </p>
+      <div class="grid c3">
+        <div class="card">
+          <h4>TAM — السوق الكلي المحتمل</h4>
+          <div class="stat">≈$1.35<span class="u">مليار</span></div>
+          <p>مجموع سوق الإعلانات المبوّبة الرقمية ($1.2B) وسوق منصات العمل الحر (≈$150M) — الحيّزان اللذان يلتقي عندهما نموذج دبّرني. <em>مجموع تقديري مركّب من مصدرين مستقلين، لا رقم رسمي واحد.</em></p>
+        </div>
+        <div class="card">
+          <h4>SAM — القابل للخدمة فعلياً</h4>
+          <div class="stat">≈220–260<span class="u">م ريال / سنة</span></div>
+          <p>حصر على سكان المدن الأربع المستهدفة (الرياض/جدة/الدمام/مكة، ≈14 مليون نسمة تقديراً) × افتراض 0.6 مهمة قابلة للوساطة شهرياً لكل أسرة رقمية نشطة × متوسط قيمة مهمة 30–50 ريال. <em>نموذج تقديري داخلي — الافتراضات قابلة للمراجعة الميدانية.</em></p>
+        </div>
+        <div class="card">
+          <h4>SOM — القابل للاستحواذ (3–5 سنوات)</h4>
+          <div class="stat">1–3<span class="u">% من SAM</span></div>
+          <p>سيناريو استحواذ واقعي لمنصة جديدة تبني الثقة تدريجياً، يعادل تفعيل 3,000–5,000 عملية يومية عند النضج — نفس الافتراض التشغيلي المستخدم في نموذج الإيرادات بالقسم 06.</p>
+        </div>
+      </div>
+      <div class="callout warn">
+        <span class="tag">شفافية منهجية</span>
+        أرقام SAM وSOM أعلاه نموذج تقديري من إعداد فريق دبّرني، وليست مستخلصة من تقرير
+        سوق منشور بعنوان مطابق. يُنصح بالتحقق الميداني (استبيان على عيّنة من المدن
+        المستهدفة) قبل استخدامها في أي التزام تعاقدي مع مستثمر.
+      </div>
+
+      <h3>مصفوفة المقارنة التنافسية</h3>
+      <div class="legend">
+        <span><span class="dot" style="background:var(--good)"></span> ميزة قوية لدبّرني</span>
+        <span><span class="dot" style="background:var(--warn)"></span> جزئي / محدود</span>
+        <span><span class="dot" style="background:var(--bad)"></span> غير متوفر</span>
+      </div>
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>المعيار</th>
+              <th>دبّرني</th>
+              <th>حراج والمبوّبات</th>
+              <th>مكاتب التعقيب التقليدية</th>
+              <th>منصات الخدمة المباشرة</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>آلية التسعير</td>
+              <td><span class="pos">مزايدة تنافسية مفتوحة</span></td>
+              <td><span class="neg">سعر ثابت من طرف واحد</span></td>
+              <td><span class="neg">تفاوض شفهي غير موثّق</span></td>
+              <td><span class="mid">تسعير خوارزمي مغلق</span></td>
+            </tr>
+            <tr>
+              <td>حماية المال أثناء التنفيذ (Escrow)</td>
+              <td><span class="pos">ضمان مالي فعلي (Ledger لا يُعدَّل)</span></td>
+              <td><span class="neg">غير موجود</span></td>
+              <td><span class="neg">غير موجود — دفع نقدي مباشر</span></td>
+              <td><span class="mid">أحياناً عبر بوابة الدفع فقط</span></td>
+            </tr>
+            <tr>
+              <td>تحقّق الهوية والموقع</td>
+              <td><span class="pos">تحقّق إلزامي + موقع GPS للمهام الميدانية</span></td>
+              <td><span class="neg">لا تحقّق حقيقي</span></td>
+              <td><span class="mid">ثقة شخصية/معرفة سابقة فقط</span></td>
+              <td><span class="pos">تحقّق قوي عادة</span></td>
+            </tr>
+            <tr>
+              <td>نطاق المهمّات المدعومة</td>
+              <td><span class="pos">عام: تعقيب، نقل، تنظيف، تجميع، مستندات...</span></td>
+              <td><span class="mid">إعلاني فقط، لا وساطة تنفيذ</span></td>
+              <td><span class="neg">تعقيب حكومي فقط غالباً</span></td>
+              <td><span class="neg">خدمة واحدة متخصّصة عادة</span></td>
+            </tr>
+            <tr>
+              <td>سجل تقييم موثوق للطرفين</td>
+              <td><span class="pos">تقييم ثنائي الاتجاه مرتبط بمعاملة فعلية</span></td>
+              <td><span class="neg">غير موجود</span></td>
+              <td><span class="neg">غير موجود</span></td>
+              <td><span class="pos">موجود غالباً</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>الفجوة التي يعالجها التسعير العكسي والضمان المالي</h3>
+      <p>
+        الفجوة الحقيقية ليست "عدم وجود تطبيقات" — السوق مزدحم بمبوّبات ومنصات توصيل
+        متخصّصة. الفجوة هي أن <strong>لا منصّة واحدة تجمع بين اتجاه التسعير العكسي وحجز
+        المال أثناء التنفيذ</strong> لفئة المهمّات الميدانية المتنوّعة وغير المعيارية.
+        حراج يحل مشكلة "العرض والطلب على سلعة"، لا "تنفيذ مهمة بثقة". مكاتب التعقيب تحل
+        مشكلة "من ينفّذ"، لا "بأي سعر عادل وبأي ضمان". دبّرني يستهدف الفراغ الدقيق بين
+        الاثنين.
+      </p>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 4 — TECHNICAL ARCHITECTURE -->
+    <!-- ============================================================ -->
+    <section class="doc alt" id="s4">
+      <div class="sec-eyebrow"><span class="idx">04</span><span class="lbl">Technical Architecture &amp; Product Workflows</span></div>
+      <h2 class="title">معمارية النظام وطرق العمل<span class="sub">من نقرة النشر إلى تحرير المبلغ المحجوز</span></h2>
+
+      <h3>حزمة التقنية (Tech Stack)</h3>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>الطبقة</th><th>التقنية</th><th>الدور</th></tr></thead>
+          <tbody>
+            <tr><td>تطبيق الجوال</td><td class="num">Flutter + Riverpod + go_router</td><td>واجهة واحدة لـ iOS/Android، إدارة حالة تفاعلية، توجيه مبني على الأدوار (ناشر/مُدبِّر)</td></tr>
+            <tr><td>نظام التصميم</td><td class="num">Material 3 + RTL + Tajawal</td><td>دعم كامل للعربية من اليمين لليسار كأولوية أولى، لا كإضافة لاحقة</td></tr>
+            <tr><td>الخلفية (Backend)</td><td class="num">Supabase (Postgres)</td><td>قاعدة بيانات، مصادقة، تخزين، وقنوات فورية (Realtime) للمزايدة الحيّة</td></tr>
+            <tr><td>الموقع الجغرافي</td><td class="num">PostGIS + Mapbox</td><td>مطابقة المهام الميدانية بالمسافة، تحديد المدينة تلقائياً عبر GPS</td></tr>
+            <tr><td>التحقق والإشعارات</td><td class="num">UltraMsg (WhatsApp API)</td><td>إرسال رمز التحقق OTP عبر واتساب — عبر Edge Function مخصّصة لا كود مضمّن</td></tr>
+            <tr><td>المدفوعات</td><td class="num">Moyasar <span style="color:var(--warn)">(قيد الربط)</span></td><td>شحن المحفظة بمصادر دفع سعودية (مدى/بطاقات) — لن يُفعَّل قبل اكتمال اختبار طرفي حقيقي</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>رحلة طالب الخدمة (الناشر)</h3>
+      <div class="journey">
+        <div class="step"><div class="rail"><div class="dot">1</div><div class="line"></div></div><div class="body"><h5>نشر المهمّة</h5><p>وصف المهمة، الميزانية التقريبية، وللمهام الميدانية: تحديد الموقع (يُستنتج اسم المدينة تلقائياً من الإحداثيات، لا يُدخله المستخدم يدوياً لتفادي أخطاء التصنيف).</p></div></div>
+        <div class="step"><div class="rail"><div class="dot">2</div><div class="line"></div></div><div class="body"><h5>استقبال العروض</h5><p>يتنافس المُدبّرون بعروض سعر مرئية للجميع في الوقت الفعلي عبر قناة Realtime — لا عروض خاصة مخفية تتيح تلاعباً بالسعر.</p></div></div>
+        <div class="step"><div class="rail"><div class="dot">3</div><div class="line"></div></div><div class="body"><h5>قبول عرض وحجز المبلغ</h5><p>عند القبول، يُحجز مبلغ العرض من محفظة الناشر داخل نظام الـEscrow فوراً — لا يظهر كرصيد متاح لأي طرف حتى إتمام المهمة.</p></div></div>
+        <div class="step"><div class="rail"><div class="dot">4</div><div class="line"></div></div><div class="body"><h5>التواصل والتنفيذ</h5><p>محادثة داخل التطبيق بين الطرفين لتنسيق التفاصيل، دون الحاجة لمشاركة رقم هاتف شخصي مبكراً.</p></div></div>
+        <div class="step"><div class="rail"><div class="dot">5</div></div><div class="body"><h5>تأكيد الإتمام والتقييم</h5><p>تأكيد الناشر لإتمام المهمة يُطلق تحرير المبلغ من الـEscrow لمحفظة المُدبِّر (بعد خصم العمولة)، يليه تقييم ثنائي الاتجاه.</p></div></div>
+      </div>
+
+      <h3>رحلة مقدّم الخدمة (المُدبِّر)</h3>
+      <div class="journey">
+        <div class="step"><div class="rail"><div class="dot">1</div><div class="line"></div></div><div class="body"><h5>تفعيل دور المُدبِّر</h5><p>تبديل الدور من "ناشر" إلى "مُدبِّر" من الإعدادات — نفس الحساب يمكن أن يكون الاثنين، بمنع صريح (على مستوى الصلاحيات وعلى مستوى الواجهة معاً) من تقديم عرض على مهمّة نشرها بنفسه.</p></div></div>
+        <div class="step"><div class="rail"><div class="dot">2</div><div class="line"></div></div><div class="body"><h5>تصفّح المهام القريبة</h5><p>قائمة مهام مرتّبة بالمسافة الجغرافية والفئة، مع حد بحث حالي 50 مهمة (فجوة تقنية معروفة، مدرجة في خارطة الطريق).</p></div></div>
+        <div class="step"><div class="rail"><div class="dot">3</div><div class="line"></div></div><div class="body"><h5>تقديم عرض تنافسي</h5><p>عرض سعر مع رسالة قصيرة تبرز الخبرة أو التقييمات السابقة.</p></div></div>
+        <div class="step"><div class="rail"><div class="dot">4</div><div class="line"></div></div><div class="body"><h5>تنفيذ المهمّة</h5><p>تنسيق ميداني مباشر مع الناشر، مع إمكان تحديث حالة التنفيذ داخل المحادثة.</p></div></div>
+        <div class="step"><div class="rail"><div class="dot">5</div></div><div class="body"><h5>استلام المبلغ في المحفظة</h5><p>يُقيَّد المبلغ (بعد خصم العمولة) في محفظته فور تأكيد الناشر — القيد يُضاف لدفتر الحركة (Ledger) ولا يُعدَّل رجعياً أبداً.</p></div></div>
+      </div>
+
+      <h3>معمارية الضمان المالي (Escrow) وإدارة النزاعات</h3>
+      <p>
+        القاعدة الذهبية في تصميم النظام المالي: <strong>الـLedger لا يُعدَّل، فقط يُضاف
+        إليه</strong>، ومحمي بقيد تنفيذي (Trigger) فعلي على مستوى قاعدة البيانات — لا
+        اعتماداً على انضباط كود التطبيق فقط. كل دالة قادرة على تحريك المال بين المحافظ
+        (SECURITY DEFINER) مقيَّدة صراحة لصلاحية الخادم (service_role) فقط، بحيث لا
+        يستطيع أي طلب من التطبيق نفسه — حتى لو تم اختراقه — تحريك مال مباشرة متجاوزاً
+        منطق العمل.
+      </p>
+      <div class="flow">
+        <div class="box"><div class="t">محفظة الناشر</div><div class="d">رصيد متاح قبل قبول العرض</div></div>
+        <div class="arrow">←</div>
+        <div class="box hold"><div class="t">حجز Escrow</div><div class="d">يُخصم من "المتاح"، يُقيَّد كـ"محجوز" — غير قابل للسحب من أي طرف</div></div>
+        <div class="arrow">←</div>
+        <div class="box"><div class="t">تنفيذ المهمّة</div><div class="d">المال معلّق حتى تأكيد الطرفين أو حسم نزاع</div></div>
+        <div class="arrow">←</div>
+        <div class="box"><div class="t">تحرير المبلغ</div><div class="d">عمولة المنصّة (10%) → حساب المنصّة<br>الباقي → محفظة المُدبِّر</div></div>
+      </div>
+      <p>
+        عند نشوء نزاع (عدم اتفاق الطرفين على إتمام المهمة)، يبقى المبلغ في حالة "محجوز"
+        ولا يُحرَّر تلقائياً لأي طرف — وهي نقطة التصميم الحاسمة: النظام مبني بحيث
+        الحياد الافتراضي هو "لا صرف بلا تأكيد"، لا "صرف تلقائي بعد مهلة" الذي قد يُستغل.
+      </p>
+
+      <h3>الأمان: طبقة مبنية على دروس حوادث حقيقية لا افتراضات نظرية</h3>
+      <p>
+        بيانات الاتصال الحسّاسة (رقم الهاتف والبريد الإلكتروني) معزولة في جدول منفصل
+        (<span class="num">profile_contacts</span>) محمي بسياسة أمان على مستوى الصفوف
+        (RLS) حقيقية تُقيّد كل قراءة بـ<span class="num">auth.uid() = id</span> — أي أن
+        أي مستخدم لا يمكنه قراءة بيانات اتصال مستخدم آخر عبر الواجهة البرمجية مهما حاول،
+        وهذا تحقّق عبر اختبار REST حقيقي بحسابات فعلية، لا افتراضاً نظرياً بعد كتابة
+        السياسة فقط.
+      </p>
+      <ul>
+        <li>كل دالة قاعدة بيانات حسّاسة تُفحص دورياً عبر <span class="num">pg_get_functiondef</span> للتأكد من عدم وجود دوال قديمة غير موثّقة في ملفات الترحيل (Migrations) تتعامل مع نفس الأعمدة الحسّاسة.</li>
+        <li>لا مفاتيح أو رموز سرّية مضمّنة داخل كود التطبيق (IPA/APK) — كل تكامل خارجي حسّاس (مثل إرسال رمز التحقق عبر واتساب) يمر عبر Edge Function على الخادم.</li>
+        <li>الترحيلات (Migrations) تُطبَّق مباشرة على قاعدة الإنتاج بشكل موثَّق ومرقّم تسلسلياً (آخر رقم: 045)، ما يوفّر أثراً تدقيقياً كاملاً لكل تغيير بنيوي على البيانات.</li>
+      </ul>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 5 — VISION 2030 -->
+    <!-- ============================================================ -->
+    <section class="doc" id="s5">
+      <div class="sec-eyebrow"><span class="idx">05</span><span class="lbl">Vision 2030 Alignment</span></div>
+      <h2 class="title">المحاذاة مع رؤية السعودية 2030<span class="sub">أربعة مستهدفات، أثر مباشر لا رمزي</span></h2>
+
+      <div class="grid c2">
+        <div class="card">
+          <h4>01 — الاقتصاد الرقمي</h4>
+          <p>
+            كل عملية على دبّرني — من نشر المهمّة إلى تحويل الأجر — تحدث داخل قنوات رقمية
+            موثّقة بالكامل، محوّلة نشاطاً اقتصادياً كان يجري نقداً وشفهياً خارج أي إحصاء
+            رسمي إلى نشاط رقمي قابل للقياس. الاقتصاد الرقمي يساهم حالياً بـ<strong>16.0%</strong>
+            من الناتج المحلي (2024) والهدف الرسمي <strong>19.2%</strong> بحلول 2030 — كل
+            معاملة تنتقل من "السوق غير الرسمي" (Informal Economy) لدبّرني تُضاف مباشرة
+            لهذا الرقم.
+          </p>
+        </div>
+        <div class="card">
+          <h4>02 — تمكين العمل الحر</h4>
+          <p>
+            عدد العاملين المستقلين في السعودية تجاوز <strong>1.8 مليون</strong> شخص،
+            ومعظمهم خارج مظلّة منصّات العمل الحر الرقمية القائمة (المتخصّصة غالباً في
+            الخدمات المكتبية/الرقمية كالتصميم والترجمة). دبّرني يفتح قناة دخل رقمية
+            موثّقة لفئة مختلفة تماماً من العمالة المستقلة: المعقّبون والحرفيون ومقدّمو
+            الخدمات الميدانية، الذين لا تخدمهم منصّات العمل الحر الحالية أصلاً.
+          </p>
+        </div>
+        <div class="card">
+          <h4>03 — التحوّل لنظام نقد لا ورقي</h4>
+          <p>
+            المملكة حقّقت بالفعل <strong>79%</strong> معاملات غير نقدية بنهاية 2025،
+            متجاوزة هدف الـ70% قبل موعده، والهدف الجديد <strong>80%</strong> بحلول 2030.
+            دبّرني يستهدف تحديداً الشريحة الأكثر مقاومة للتحوّل: مدفوعات المهام الصغيرة
+            غير الرسمية (30-50 ريال) التي لا تزال تتم نقداً بين الأفراد — إغلاق هذه
+            الفجوة الأخيرة هو بالضبط ما يحتاجه الوصول لهدف 80%.
+          </p>
+        </div>
+        <div class="card">
+          <h4>04 — جودة الحياة وتسهيل الخدمات اليومية</h4>
+          <p>
+            تقليص زمن العثور على مُدبِّر موثوق من "أيام من السؤال في المجموعات" إلى
+            "دقائق من نشر مهمّة واستقبال عروض مقارنة" هو أثر مباشر وقابل للقياس على
+            محور "جودة الحياة" في رؤية 2030، بلا حاجة لبنية تحتية جديدة أو استثمار
+            عام — فقط إعادة تنظيم سوق قائم فعلياً.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 6 — FINANCIAL VIABILITY -->
+    <!-- ============================================================ -->
+    <section class="doc alt" id="s6">
+      <div class="sec-eyebrow"><span class="idx">06</span><span class="lbl">Financial Viability &amp; Business Model</span></div>
+      <h2 class="title">الجدوى الاقتصادية ونموذج الإيرادات<span class="sub">عمولة الصفقة كمحرك أساسي، وتدفّقات مكمّلة</span></h2>
+
+      <h3>نماذج الدخل</h3>
+      <div class="grid c3">
+        <div class="card">
+          <h4>عمولة الصفقة</h4>
+          <div class="stat">10<span class="u">%</span></div>
+          <p>المصدر الأساسي — تُخصم تلقائياً عند تحرير المبلغ من الـEscrow، بلا فاتورة يدوية ولا اعتماد على تحصيل لاحق.</p>
+        </div>
+        <div class="card">
+          <h4>اشتراكات VIP للمُدبّرين</h4>
+          <div class="stat">اشتراك<span class="u">شهري</span></div>
+          <p>ظهور أولوية في قوائم البحث، حد أعلى للعروض اليومية، شارة "موثّق" مرئية — تدفّق دخل متكرر (Recurring) يقلّل الاعتماد الكامل على حجم المعاملات.</p>
+        </div>
+        <div class="card">
+          <h4>إعلانات موجّهة</h4>
+          <div class="stat">CPM/CPC<span class="u"></span></div>
+          <p>تثبيت مُدبّرين أو فئات خدمة في أعلى نتائج فئة معيّنة — يُفعَّل بعد الوصول لكثافة مستخدمين كافية لعدم إفساد تجربة البحث.</p>
+        </div>
+      </div>
+
+      <h3>افتراضات النموذج (مقدَّمة صراحة من المؤسس)</h3>
+      <p>
+        متوسط قيمة المهمّة الواحدة على المنصّة يتراوح بين <strong>30 و50 ريالاً</strong>
+        — رقم مصدره تقدير المؤسس المباشر المبني على طبيعة المهام المستهدفة (لا رقم
+        منقول من تقرير خارجي). سيناريو النضج التشغيلي المستخدم هنا: الوصول إلى
+        <strong> 5,000 عملية مكتملة يومياً</strong> عند نضج التشغيل في المدن الأربع.
+      </p>
+
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>السنة</th><th class="num">عمليات/يوم (تقديري)</th><th class="num">إيراد سنوي من العمولة (نطاق)</th><th>الحالة</th></tr></thead>
+          <tbody>
+            <tr><td>السنة 1</td><td class="num">150 – 400</td><td class="num">SAR 165K – 730K</td><td>إطلاق تجريبي، 4 مدن، بناء ثقة أولي</td></tr>
+            <tr><td>السنة 2</td><td class="num">600 – 1,200</td><td class="num">SAR 660K – 2.19M</td><td>نمو عضوي + أول حملات سفراء علامة</td></tr>
+            <tr><td>السنة 3</td><td class="num">1,800 – 3,000</td><td class="num">SAR 1.97M – 5.48M</td><td>تفعيل اشتراكات VIP كتدفّق ثانٍ</td></tr>
+            <tr><td>السنة 4</td><td class="num">3,000 – 4,200</td><td class="num">SAR 3.29M – 7.67M</td><td>تفعيل الإعلانات الموجّهة</td></tr>
+            <tr><td>السنة 5</td><td class="num">4,000 – 5,000</td><td class="num">SAR 4.38M – 9.13M</td><td>نضج تشغيلي في المدن الأربع، تقييم للتوسّع الإقليمي</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout warn">
+        <span class="tag">هذا نموذج، لا وعد</span>
+        الجدول أعلاه سيناريو نمو تقديري مبني على مسار خطي محافظ بين نقطتي بداية ونهاية
+        معلنتين (150 → 5,000 عملية/يوم)، وليس توقعاً معتمداً من نموذج مالي مُدقَّق. أي
+        استخدام منه في مفاوضة تقييم يجب أن يُرفق بافتراضات معدّل التحويل واقتناء
+        العملاء (CAC) الفعلية بعد بدء التشغيل.
+      </div>
+
+      <h3>هيكل التكلفة الرئيسي المتوقّع</h3>
+      <ul>
+        <li><strong>رسوم بوابة الدفع (Moyasar):</strong> نسبة على كل عملية شحن/سحب محفظة — تكلفة متغيّرة مرتبطة مباشرة بالحجم.</li>
+        <li><strong>البنية التحتية (Supabase/Mapbox/UltraMsg):</strong> تكلفة تتدرّج مع عدد المستخدمين النشطين والاستعلامات الجغرافية — منخفضة نسبياً في مرحلة ما قبل النمو الكبير.</li>
+        <li><strong>حساب Apple Developer Program:</strong> رسم سنوي ثابت، تمّ الاشتراك فيه بالفعل كخطوة مؤكدة نحو الإطلاق.</li>
+        <li><strong>التسويق واقتناء المستخدمين:</strong> البند الأكبر تحكّماً في سرعة النمو — تفاصيله في القسم 07.</li>
+      </ul>
+
+      <h3>العائد على الاستثمار (ROI) — منطق الحساب لا رقم نهائي مُلزم</h3>
+      <p>
+        بما أن جولة التمويل ومبلغها لم يُحسما بعد في هذه الوثيقة، لا تُقدَّم نسبة ROI
+        محدَّدة كحقيقة — بدلاً من ذلك، معادلة الحساب المُقترحة لأي مستثمر: (الإيراد
+        التراكمي للسنوات 1-5 من الجدول أعلاه، مطروحاً منه هيكل التكلفة أعلاه) ÷ مبلغ
+        الاستثمار المطروح فعلياً. يُنصح ببناء نموذج مالي كامل (P&amp;L تفصيلي شهري) قبل
+        أي عرض رسمي على مستثمر، بدل الاعتماد على الجدول أعلاه وحده.
+      </p>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 7 — GTM -->
+    <!-- ============================================================ -->
+    <section class="doc" id="s7">
+      <div class="sec-eyebrow"><span class="idx">07</span><span class="lbl">GTM &amp; Marketing Strategy</span></div>
+      <h2 class="title">خطط التسويق والاستحواذ<span class="sub">استراتيجية ثنائية الجانب: طالب الخدمة والمُدبِّر معاً</span></h2>
+      <p class="lede">
+        النموذج ثنائي الجانب (Two-Sided Marketplace) يفرض قاعدة تسويقية صارمة: لا فائدة
+        من جلب آلاف الناشرين بلا مُدبّرين كافين للاستجابة السريعة، والعكس صحيح. لذلك
+        الاستحواذ يجب أن يُدار كمسارين متوازيين لا مسار واحد.
+      </p>
+
+      <h3>جانب الطلب — استقطاب طالبي الخدمة</h3>
+      <ul>
+        <li><strong>استهداف جغرافي ضيّق أولاً (حي أو مدينة واحدة):</strong> تركيز الميزانية الإعلانية على نطاق جغرافي صغير حتى تتحقق كثافة عرض/طلب محسوسة، بدل تشتيت الميزانية على أربع مدن دفعة واحدة.</li>
+        <li><strong>محتوى مقارنة صريح:</strong> حملات تُظهر الفرق الملموس بين "اسأل في مجموعة واتساب وانتظر" مقابل "انشر واستقبل عروضاً خلال دقائق" — الألم الحقيقي الذي بُني عليه المنتج (القسم 01) هو نفسه المادة التسويقية الأقوى.</li>
+        <li><strong>شراكات مع مجمّعات سكنية وحسابات أحياء على منصات التواصل:</strong> نفس القنوات غير الرسمية التي كانت المشكلة (مجموعات واتساب الحي) تصبح أول قناة توزيع.</li>
+      </ul>
+
+      <h3>جانب العرض — استقطاب المُدبّرين</h3>
+      <ul>
+        <li><strong>استهداف مباشر للعمالة الحرفية والمعقّبين النشطين فعلاً</strong> على قنوات غير رسمية (حساباتهم الشخصية، مجموعات مهنية) بعرض واضح: دخل إضافي موثّق دون تكلفة اشتراك أولية.</li>
+        <li><strong>حوافز الانضمام المبكر:</strong> إعفاء مؤقت أو مخفَّض من العمولة لأوائل المُدبّرين في كل مدينة — يبني كثافة عرض كافية قبل تعميم الحملة على جانب الطلب في تلك المدينة.</li>
+        <li><strong>شارة "موثّق" مرتبطة بالتحقق الفعلي للهوية:</strong> رأس مال اجتماعي قابل للتسويق الذاتي من المُدبِّر نفسه (يشاركها في ملفه الشخصي على منصّات أخرى).</li>
+      </ul>
+
+      <h3>بناء الثقة وبرنامج سفراء العلامة</h3>
+      <p>
+        الثقة هي المنتج الفعلي، لا الميزة الثانوية — أي خلل ملموس في الضمان المالي أو
+        التقييمات يهدم الاقتراح الأساسي للمنصّة بالكامل. لذلك:
+      </p>
+      <ul>
+        <li>عرض علني (بدون بيانات حسّاسة) لعدد المعاملات المكتملة وقيمتها الإجمالية المحفوظة عبر الـEscrow — دليل اجتماعي رقمي مباشر.</li>
+        <li>برنامج سفراء يستهدف تحديداً مُدبّرين ذوي تقييم عالٍ مستقر (لا عدد عروض كبير فقط) لتمثيل المنصّة في مدنهم — الحافز مبني على الأداء الموثّق داخل النظام نفسه، لا معايير خارجية.</li>
+        <li>سياسة نزاعات معلنة وواضحة (لا "نتعامل مع كل حالة على حدة" غامضة) — الغموض في حسم النزاعات هو أسرع طريق لفقدان الثقة في منصّة مالية.</li>
+      </ul>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 8 — ROADMAP -->
+    <!-- ============================================================ -->
+    <section class="doc alt" id="s8">
+      <div class="sec-eyebrow"><span class="idx">08</span><span class="lbl">Product Roadmap &amp; Future Scaling</span></div>
+      <h2 class="title">خارطة الطريق والتطوير المستقبلي<span class="sub">من الإطلاق التجريبي إلى الذكاء الاصطناعي التوصوي</span></h2>
+
+      <div class="rmap">
+        <div class="phase">
+          <div class="when">MVP<br><span class="status done">منجز جزئياً</span></div>
+          <div>
+            <h5>الأساس التقني والمالي</h5>
+            <p>تطبيق Flutter كامل، تسجيل دخول عبر واتساب، نشر/مزايدة/محادثة، تبديل الأدوار، تحصين مالي كامل لبنية الـEscrow والـLedger (Migrations 1–45)، إصلاح تسريب بيانات الاتصال. حساب Apple Developer Program مفعَّل.</p>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="when">قبل الإطلاق<br><span class="status wip">قيد التنفيذ</span></div>
+          <div>
+            <h5>إغلاق الفجوات الحاجبة للإطلاق</h5>
+            <p>ربط Moyasar واختبار شحن/سحب حقيقي طرفاً لطرف (لا إطلاق قبله وفق قرار المؤسس)، توقيع Xcode بالحساب المدفوع، إعداد App Store Connect (بطاقة خصوصية دقيقة، لقطات، الوصف)، دورة TestFlight داخلية.</p>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="when">الإطلاق الأول<br><span class="status next">قادم</span></div>
+          <div>
+            <h5>الرياض كمدينة انطلاق، ثم التوسّع للمدن الأربع</h5>
+            <p>إطلاق تدريجي مدينة تلو الأخرى (وليس دفعة واحدة) لضمان كثافة عرض/طلب حقيقية قبل التوسّع الجغرافي، مدعوماً بحملات جانب العرض المذكورة في القسم 07.</p>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="when">ما بعد الإطلاق المباشر<br><span class="status next">قادم</span></div>
+          <div>
+            <h5>إغلاق الفجوات التشغيلية غير الحاجبة</h5>
+            <p>رصد أعطال حقيقي (Crash/Error Monitoring — غير موجود حالياً إطلاقاً)، تفعيل اختبارات آلية في خط الأنابيب (CI الحالي يبني فقط دون تشغيل flutter test/analyze)، إشعارات Push (غير موجودة حالياً)، ترقيم صفحات حقيقي (Pagination) للمحادثات والبحث بدل الحدود الثابتة الحالية (100 رسالة / 50 مهمة).</p>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="when">التوسّع الإقليمي</div>
+          <div>
+            <h5>مدن إضافية داخل السعودية</h5>
+            <p>التوسّع لمدن من الدرجة الثانية بعد إثبات نموذج الوحدة الاقتصادية (Unit Economics) في المدن الأربع الأولى — بلا أي توسّع خارج السعودية في هذه المرحلة.</p>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="when">دمج الذكاء الاصطناعي</div>
+          <div>
+            <h5>تسعير ذكي وتوصية مطابقة</h5>
+            <p>اقتراح نطاق سعر عادل للناشر عند النشر بناءً على تاريخ مهام مشابهة فعلية (لا سعر مفروض، بل مرجعية إضافية تدعم قرار المزايدة)، وترتيب توصوي للمُدبّرين الأنسب لمهمّة معيّنة بناءً على تاريخ الأداء والمسافة معاً.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 9 — STRATEGIC ADD-ONS -->
+    <!-- ============================================================ -->
+    <section class="doc" id="s9">
+      <div class="sec-eyebrow"><span class="idx">09</span><span class="lbl">Strategic Additions</span></div>
+      <h2 class="title">اقتراحات استراتيجية إضافية<span class="sub">أفكار من إعدادنا لتعزيز القيمة التشغيلية والاستثمارية</span></h2>
+      <p class="lede">
+        الأفكار التالية اقتراحات لتعزيز الوضع التفاوضي أمام المستثمرين والجهات الداعمة —
+        هي اجتهاد إضافي، وليست جزءاً من النطاق التقني المؤكَّد حالياً.
+      </p>
+
+      <div class="grid c2">
+        <div class="card">
+          <h4>مؤشر "نزاهة السعر" العلني</h4>
+          <p>نشر متوسط سعر كل فئة مهمّة (تعقيب، نقل، تنظيف...) لكل مدينة كبيانات مفتوحة مبسّطة — يحوّل دبّرني من "منصّة وساطة" إلى "مرجع سعري" للسوق كلّه، وهو أصل بيانات قيّم للمستثمر لاحقاً بحد ذاته، مستقل عن حجم المعاملات.</p>
+        </div>
+        <div class="card">
+          <h4>تكامل مباشر مع جهات تعقيب رسمية</h4>
+          <p>شراكة اختيارية مع مكاتب تعقيب مرخّصة قائمة كـ"مُدبّرين مؤسسيين" داخل المنصّة نفسها — يمنح دبّرني مصداقية أمام الجهات الحكومية دون بناء ترخيص تعقيب مستقل من الصفر.</p>
+        </div>
+        <div class="card">
+          <h4>خط تأمين مصغّر على المهام عالية القيمة</h4>
+          <p>لمهام تتجاوز سقفاً معيّناً (نقل أثاث فاخر، شحن مستندات حسّاسة)، تغطية تأمينية اختيارية بقسط صغير يُضاف للمعاملة — تدفّق إيراد إضافي وحافز ثقة إضافي في آن واحد.</p>
+        </div>
+        <div class="card">
+          <h4>واجهة برمجية (API) محدودة للشركاء المؤسسيين</h4>
+          <p>السماح لشركات عقارية أو إدارات مرافق (Facility Management) بنشر مهام صيانة متكرّرة برمجياً بدل الواجهة اليدوية — يفتح شريحة عملاء B2B موازية للمستخدم الفردي دون تغيير جوهر المنتج.</p>
+        </div>
+        <div class="card">
+          <h4>صندوق ضمان جماعي (Trust Pool) صغير</h4>
+          <p>نسبة محدودة جداً من العمولة تُخصَّص لصندوق تعويض استثنائي في حالات النزاع النادرة المؤكَّدة تقصيراً واضحاً — يُسوَّق كإشارة ثقة إضافية تتجاوز الضمان المالي الأساسي للمعاملة الواحدة.</p>
+        </div>
+        <div class="card">
+          <h4>تقرير أثر اقتصادي سنوي علني</h4>
+          <p>نشر تقرير سنوي مبسّط: عدد المهام المكتملة، إجمالي الدخل الذي تحوّل لمُدبّرين مستقلين، عدد المدن. أداة علاقات عامة مباشرة مع الجهات الحكومية الداعمة لرؤية 2030، وتُبنى تلقائياً من بيانات المنصّة الحقيقية دون جهد تسويقي إضافي.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SOURCES -->
+    <!-- ============================================================ -->
+    <section class="doc alt" id="sources">
+      <div class="sec-eyebrow"><span class="idx">10</span><span class="lbl">References</span></div>
+      <h2 class="title">المصادر<span class="sub">كل رقم مرجعي في هذه الوثيقة مصدره أحد التالية</span></h2>
+      <ul class="sources">
+        <li>الهيئة العامة للإحصاء (GASTAT) — <a href="https://www.stats.gov.sa/en/w/news/150" target="_blank" rel="noopener">مساهمة الاقتصاد الرقمي في الناتج المحلي 2024</a></li>
+        <li>وزارة الاتصالات وتقنية المعلومات (MCIT) — <a href="https://mcit.gov.sa/en/news/saudi-arabia%E2%80%99s-digital-economy-new-era-tech-growth-innovation-and-global-impact-empowered-hrh" target="_blank" rel="noopener">هدف الاقتصاد الرقمي 19.2% بحلول 2030</a></li>
+        <li>ResearchAndMarkets — <a href="https://www.researchandmarkets.com/reports/6203942/saudi-arabia-freelance-platforms-market-report" target="_blank" rel="noopener">تقرير سوق منصات العمل الحر في السعودية 2025-2030</a></li>
+        <li>Arab News — <a href="https://www.arabnews.com/node/2648051" target="_blank" rel="noopener">التحوّل السعودي نحو الاقتصاد اللانقدي</a></li>
+        <li>Ken Research — <a href="https://www.kenresearch.com/saudi-arabia-online-classifieds-marketplaces-market" target="_blank" rel="noopener">سوق الإعلانات المبوّبة الرقمية في السعودية</a></li>
+        <li>DXB Apps / Similarweb — بيانات تشغيلية عن منصّة حراج (زيارات وإعلانات يومية)</li>
+        <li>DataReportal — <a href="https://datareportal.com/reports/digital-2026-saudi-arabia" target="_blank" rel="noopener">Digital 2026: Saudi Arabia</a></li>
+        <li>Monsha'at (الهيئة العامة للمنشآت الصغيرة والمتوسطة) — هدف مساهمة المنشآت الصغيرة والمتوسطة 35% بحلول 2030</li>
+        <li>Vision2030.ai — <a href="https://vision2030.ai/encyclopedia/e-commerce-saudi-arabia-2025/" target="_blank" rel="noopener">حجم سوق التجارة الإلكترونية السعودي 2025</a></li>
+      </ul>
+      <div class="callout warn">
+        <span class="tag">تنبيه منهجي أخير</span>
+        كل رقم في هذه الوثيقة غير مرتبط بمصدر صريح أعلاه (توقعات الإيرادات، SAM/SOM،
+        نطاقات النمو) هو <strong>نموذج تقديري داخلي</strong> مبني على افتراضات مذكورة
+        بجانبه مباشرة، لا رقم مؤكَّد من طرف ثالث. يُنصح بمراجعة مالية/سوقية مستقلة قبل
+        استخدام هذه الوثيقة كأساس وحيد لأي قرار استثماري ملزم.
+      </div>
+    </section>
+
+    <footer class="doc">
+      <div class="mark">دبّرني</div>
+      <p>أبشر بي.</p>
+      <p>وثيقة داخلية سرّية — الإصدار 1.0 — 31 أغسطس 2026 — إعداد فهد بن سعد</p>
+    </footer>
+  </main>
+</div>
+
+<script>
+(function(){
+  var toggle = document.getElementById('tocToggle');
+  var panel = document.getElementById('tocPanel');
+  if(!toggle || !panel) return;
+  toggle.addEventListener('click', function(){ panel.classList.toggle('open'); });
+  toggle.addEventListener('keydown', function(e){
+    if(e.key==='Enter' || e.key===' '){ e.preventDefault(); panel.classList.toggle('open'); }
+  });
+  panel.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ panel.classList.remove('open'); });
+  });
+})();
+</script>
+<script>
+(function(){
+  var CODE_HASH = "4af83b22070f7935e79e2de98afbddb0c5a922c23b07b64cb5d019b80dc0e3b1";
+  var gate = document.getElementById('gate');
+  var docEl = document.getElementById('doc');
+  var form = document.getElementById('gateForm');
+  var input = document.getElementById('gateInput');
+  var err = document.getElementById('gateError');
+
+  function unlock(){
+    gate.style.display = 'none';
+    docEl.hidden = false;
+    try{ sessionStorage.setItem('dabberni_investor_ok','1'); }catch(e){}
+  }
+
+  try{
+    if(sessionStorage.getItem('dabberni_investor_ok') === '1'){ unlock(); }
+  }catch(e){}
+
+  async function sha256Hex(text){
+    var enc = new TextEncoder().encode(text);
+    var buf = await crypto.subtle.digest('SHA-256', enc);
+    return Array.from(new Uint8Array(buf)).map(function(b){ return b.toString(16).padStart(2,'0'); }).join('');
+  }
+
+  if(form){
+    form.addEventListener('submit', async function(e){
+      e.preventDefault();
+      var val = input.value.trim();
+      var hex = await sha256Hex(val);
+      if(hex === CODE_HASH){
+        err.hidden = true;
+        unlock();
+      } else {
+        err.hidden = false;
+        input.value = '';
+        input.focus();
+        var card = document.querySelector('.gate-card');
+        card.classList.remove('gate-shake');
+        void card.offsetWidth;
+        card.classList.add('gate-shake');
+      }
+    });
+  }
+})();
+</script>
+</div>
+</body>
+</html>
