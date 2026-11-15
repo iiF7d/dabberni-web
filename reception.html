@@ -148,7 +148,32 @@ footer .wrap{padding-block:28px;display:flex;flex-wrap:wrap;justify-content:spac
 }
 </style>
 <style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-</head>
+<style id="motion">
+@media (prefers-reduced-motion:no-preference){
+  .rv{opacity:0;transform:translateY(24px);transition:opacity .85s cubic-bezier(.2,.7,.2,1),transform .85s cubic-bezier(.2,.7,.2,1)}
+  .rv.in{opacity:1;transform:none}
+  .steps .step.rv:nth-child(2),.plans .plan.rv:nth-child(2),.compare .cmp.rv:nth-child(2),.rules .col.rv:nth-child(2){transition-delay:.12s}
+  .steps .step.rv:nth-child(3),.plans .plan.rv:nth-child(3),.compare .cmp.rv:nth-child(3){transition-delay:.24s}
+  .steps .step.rv:nth-child(4),.plans .plan.rv:nth-child(4){transition-delay:.36s}
+  .step .n{display:inline-block;transform:scale(.4);transition:transform .7s cubic-bezier(.2,.9,.25,1.4) .25s}
+  .step.in .n{transform:none}
+  .plan.pick.in{animation:glowp 3s 1.2s ease-in-out infinite}
+  @keyframes glowp{50%{box-shadow:0 0 0 6px rgba(168,124,34,.14)}}
+  /* hero chat plays like a live conversation */
+  .thread .msg{animation:none!important;opacity:0;transform:translateY(10px) scale(.97);transition:opacity .45s,transform .45s}
+  .thread .msg.show{opacity:1;transform:none}
+  .typing-ind{align-self:flex-end;display:none;gap:5px;padding:12px 14px;background:var(--chat);border-radius:16px;border-start-end-radius:4px}
+  .typing-ind.on{display:inline-flex}
+  .typing-ind i{width:7px;height:7px;border-radius:50%;background:var(--wa);opacity:.5;animation:td 1s infinite}
+  .typing-ind i:nth-child(2){animation-delay:.15s}.typing-ind i:nth-child(3){animation-delay:.3s}
+  @keyframes td{50%{transform:translateY(-4px);opacity:1}}
+  .btn-main{position:relative;overflow:hidden}
+  .btn-main::after{content:"";position:absolute;top:0;bottom:0;width:40%;right:-60%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);animation:shb 5s 2s ease-in-out infinite}
+  @keyframes shb{0%{right:-60%}30%,100%{right:130%}}
+  .phone-top span::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:currentColor;margin-inline-end:6px;animation:on 1.6s infinite}
+  @keyframes on{50%{opacity:.25}}
+}
+</style></head>
 <body>
 
 
@@ -302,5 +327,25 @@ const SALES_TEXT = "السلام عليكم، جرّبت وكيل دبّرني �
 })();
 </script>
 
+<script>
+(function(){
+  var RM=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(RM)return;
+  var sel=".hero h1,.hero .lead,.hero .actions,.hero .note,.compare .cmp,.sec-head,.steps .step,.rules .col,.plans .plan,.fine,details,.cta h2,.cta p,.contact";
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});},{threshold:.15});
+  document.querySelectorAll(sel).forEach(function(el){el.classList.add("rv");io.observe(el);});
+  /* chat replay */
+  var th=document.querySelector(".thread");if(!th)return;
+  var msgs=[].slice.call(th.querySelectorAll(".msg"));
+  var ty=document.createElement("div");ty.className="typing-ind";ty.innerHTML="<i></i><i></i><i></i>";
+  function play(){msgs.forEach(function(m){m.classList.remove("show");});var t=400;
+    msgs.forEach(function(m){var bot=m.classList.contains("bot");
+      if(bot){setTimeout(function(){m.parentNode.insertBefore(ty,m);ty.classList.add("on");},t);t+=1300;setTimeout(function(){ty.classList.remove("on");m.classList.add("show");},t);t+=900;}
+      else{setTimeout(function(){m.classList.add("show");},t);t+=1100;}
+    });
+    setTimeout(play,t+6000);}
+  var started=false;new IntersectionObserver(function(es){if(es[0].isIntersecting&&!started){started=true;play();}}).observe(th);
+})();
+</script>
 </body>
 </html>
